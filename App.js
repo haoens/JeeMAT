@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
+import Navbar from './assets/components/Navbar';
+import { LinearGradient } from 'expo-linear-gradient';
+import Jeemat from './assets/components/Jeemat';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,9 +30,8 @@ export default function App() {
   
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <StatusBar style="auto" />
-      <Text style={{fontFamily:"Poppins-Bold"}}>Open up App.js to start working on your app!</Text>
-      
+		<StatusBar style="auto" hidden/>
+		<Jeemat />
     </View>
   );
 }
@@ -37,8 +39,13 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  background: {
+    flex: 1,
+    // alignItems: 'center'
+  }
 });
