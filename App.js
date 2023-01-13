@@ -6,8 +6,13 @@ import { useCallback } from 'react';
 import Navbar from './assets/components/Navbar';
 import { LinearGradient } from 'expo-linear-gradient';
 import Jeemat from './assets/components/Jeemat';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Spend from './assets/components/Spend';
+
 
 SplashScreen.preventAutoHideAsync();
+const Stack = createNativeStackNavigator()
 
 export default function App() {
 
@@ -28,10 +33,16 @@ export default function App() {
     return null;
   }
   
+  
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-		<StatusBar style="auto" hidden/>
-		<Jeemat />
+      <NavigationContainer>
+        <StatusBar style="auto" hidden/>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Jeemat" component={Jeemat}/>
+          <Stack.Screen name="Spend" component={Spend} options={{animation:"slide_from_bottom"}}/>
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>
   );
 }
