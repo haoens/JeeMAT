@@ -52,12 +52,19 @@ export default function Jeemat({ navigation }){
         <View style={styles.container}>
             <LinearGradient 
                 style={styles.background}
-                colors={["#503793", "#546ada"]}
-                // locations={[0, 1]}
+                colors={["#503793",
+                        "#546ada"]}
+                locations={[0, 1]}
                 start={{x:0, y:0}}
-                end={{x: 1, y:0}}>
+                end={{x: 1, y:0}}
+            >
                 <Navbar title="JEEMAT" position={2} />
-                <LinearGradient style={styles.content} colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} locations={[0, 0.7]}>
+
+                <LinearGradient 
+                    style={styles.content} 
+                    colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} 
+                    locations={[0, 0.7]}>
+
                     <View style={styles.topWrapper}>
                         <Text
                             style={{
@@ -73,7 +80,106 @@ export default function Jeemat({ navigation }){
                             style={styles.circleWrapper}
                             onPress={() => {if(!pressed) process()}}
                         >
-                            {/* <View style={{
+                                        
+                            <View style={{
+                                width: WIDTH * 0.3,
+                                height: WIDTH * 0.3,
+                                backgroundColor: '#a259b5',
+                                borderRadius: WIDTH * 0.15,
+                                alignItems: 'center',
+                                justifyContent: 'center'
+                            }}>
+                                <Image 
+                                    source={require('../images/Logo.png')}
+                                    style={{
+                                        width: WIDTH * 0.15,
+                                        height: WIDTH * 0.15,
+                                        zIndex: 3
+                                    }} 
+                                />
+                                <AnimatePresence>
+                                    {animation && [...Array(3).keys()].map((index) => {
+                                    return (
+                                        <MotiView
+                                            from={{opacity: 1, scale: 1}}
+                                            animate={{opacity:0, scale: 4}}
+                                            transition={{
+                                                type: 'timing',
+                                                duration: 2000,
+                                                easing: Easing.out(Easing.ease),
+                                                delay: index * 300,
+                                                loop: true,
+                                            }}
+                                            exit={{
+                                                scale: 0,
+                                                opacity: 1
+                                            }}
+                                            key={index}
+                                            style={{position:'absolute', ...styles.dot}}
+                                        />
+                                    )})}
+                                </AnimatePresence>
+                                
+                            </View>
+                                
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.bottomWrapper}>
+                        <Text style={{...FONTS.header, fontSize: 26}}>
+                            {message}
+                        </Text>
+                    </View>
+
+                </LinearGradient>
+            </LinearGradient>
+            <TouchableOpacity style={styles.game} onPress={() => navigation.navigate('Game')}>
+                {/* Replace with Motiview to shake */}
+                <View 
+                    style={{
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                    from={{
+                        rotate: "-10deg",
+                    }}
+                    animate={{
+                        rotate: "10deg"
+                    }}
+                    transition={{
+                        loop: true,
+                        type: "timing",
+                        duration: 500,
+                    }}
+                >
+                    <Image source={require('../images/Game.png')} 
+                        style={{
+                            height: WIDTH / 5, 
+                            width: WIDTH / 5,
+                            position: "absolute",
+                            zIndex: 2,
+                            bottom: 15
+                        }}
+                    />
+                    <View style={{
+                            backgroundColor: 'white',
+                            width: WIDTH / 10,
+                            zIndex: 3,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: 15
+                        }}>
+                        <Text style=
+                        {{fontFamily:'Poppins-ExtraBold', fontSize: 8}}>Play Now</Text>
+                    </View>
+                </View>
+                
+            </TouchableOpacity>
+        </View> 
+    )   
+}
+
+/* <View style={{
                                 width: WIDTH * 0.6,
                                 height: WIDTH * 0.6,
                                 backgroundColor: 'white',
@@ -99,65 +205,11 @@ export default function Jeemat({ navigation }){
                                         borderRadius: WIDTH * 0.2,
                                         alignItems: 'center',
                                         justifyContent: 'center'
-                                    }}> */}
-                                        
-                                        <View style={{
-                                            width: WIDTH * 0.3,
-                                            height: WIDTH * 0.3,
-                                            backgroundColor: '#a259b5',
-                                            borderRadius: WIDTH * 0.15,
-                                            alignItems: 'center',
-                                            justifyContent: 'center'
-                                        }}>
-                                            <Image 
-                                                source={require('../images/Logo.png')}
-                                                style={{
-                                                    width: WIDTH * 0.15,
-                                                    height: WIDTH * 0.15,
-                                                    zIndex: 3
-                                                }} 
-                                            />
-                                            <AnimatePresence>
-                                                {animation && [...Array(3).keys()].map((index) => {
-                                                return (
-                                                    <MotiView
-                                                        from={{opacity: 1, scale: 1}}
-                                                        animate={{opacity:0, scale: 4}}
-                                                        transition={{
-                                                            type: 'timing',
-                                                            duration: 2000,
-                                                            easing: Easing.out(Easing.ease),
-                                                            delay: index * 300,
-                                                            loop: true,
-                                                        }}
-                                                        exit={{
-                                                            scale: 0,
-                                                            opacity: 1
-                                                        }}
-                                                        key={index}
-                                                        style={{position:'absolute', ...styles.dot}}
-                                                    />
-                                                )})}
-                                            </AnimatePresence>
-                                            
-                                        </View>
-                                    {/* </View>
+                                    }}> */
+
+                                        {/* </View>
                                 </View>
                             </View> */}
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.bottomWrapper}>
-                        <Text style={{...FONTS.header, fontSize: 26}}>
-                            {message}
-                        </Text>
-                    </View>
-                </LinearGradient>
-            </LinearGradient>
-            
-        </View> 
-    )
-    
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -197,5 +249,10 @@ const styles = StyleSheet.create({
         height: WIDTH * 0.2,
         borderRadius: WIDTH * 0.15,
         backgroundColor: '#a259b5',
+    },
+    game: {
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
     }
 })
