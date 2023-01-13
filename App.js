@@ -9,6 +9,7 @@ import Jeemat from './assets/components/Jeemat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Spend from './assets/components/Spend';
+import Login from './assets/components/Login';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -39,6 +40,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar style="auto" hidden/>
         <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Jeemat" component={Jeemat}/>
           <Stack.Screen name="Spend" component={Spend} options={{animation:"slide_from_bottom"}}/>
         </Stack.Navigator>
