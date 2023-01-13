@@ -42,7 +42,7 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
       <NavigationContainer>
         <StatusBar style="auto" hidden/>
-        <Stack.Navigator initialRouteName='Tabs' screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName='Game' screenOptions={{headerShown: false}}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="Tabs" component={Tabs}/>
           <Stack.Screen name="Spend" component={Spend} />
