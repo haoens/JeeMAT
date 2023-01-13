@@ -7,7 +7,11 @@ import { FONTS, HEIGHT, WIDTH } from '../constants';
 export default function Login({ navigation }) {
 	return (
 		<View style={styles.wrapper}>
-			<LinearGradient colors={['black', '#442f79', 'black']} locations={[0, 0.25, 0.6]} style={styles.background}>
+			<LinearGradient 
+                colors={['black', '#442f79', 'black']} 
+                locations={[0, 0.25, 0.6]} 
+                style={styles.background}
+            >
                 <View style={styles.topWrapper}>
                     <View style={styles.logoWrapper}>
                         <Image 
@@ -17,11 +21,27 @@ export default function Login({ navigation }) {
                     </View>
 
                     <View style={styles.firstCard}>
-
+                        <Image
+                            source={require('../images/Visa.png')}
+                            style={{
+                                transform:[{rotateX: '-50deg'}, 
+                                            {rotateY: '20deg'},
+                                            {rotateZ: '58deg'}],
+                                width: 180, height: 90,
+                            }} 
+                        />
                     </View>
 
                     <View style={styles.secondCard}>
-                        
+                        <Image
+                                source={require('../images/VisaBlue.png')}
+                                style={{
+                                    transform:[{rotateX: '-50deg'}, 
+                                                {rotateY: '20deg'},
+                                                {rotateZ: '58deg'}],
+                                    width: 180, height: 90,
+                                }} 
+                        />
                     </View>
 
                     <LinearGradient 
@@ -29,7 +49,15 @@ export default function Login({ navigation }) {
                         start={{x:0, y:1}}
                         style={styles.thirdCard}
                     >
-                        
+                        <Image
+                            source={require('../images/mastercard.png')}
+                            style={{
+                                transform:[{rotateZ: '0deg'}, 
+                                            {rotateY: '40deg'}, 
+                                            {rotateX: '0deg'}],
+                                width: 100, height: 62
+                            }}
+                        />
                     </LinearGradient>
 
                 </View>
@@ -39,19 +67,48 @@ export default function Login({ navigation }) {
                     </Text>
 
                     <View style={styles.bottomMidWrapper}>
-                        <View style={styles.startWrapper}>
-
-                        </View>
+                        <LinearGradient 
+                            colors={['#ff739d', '#c375ff', '#7986ff']}
+                            locations={[.3, .67, 1]}
+                            start={{x:0, y:1}} end={{x:1, y:0}} 
+                            style={styles.startWrapper} 
+                            onTouchEnd={() => navigation.navigate('Jeemat')}
+                        >
+                            <Text 
+                                style={{
+                                    color: 'white',
+                                    fontFamily: 'Poppins-Medium'
+                                }}
+                            >
+                                Get Started
+                            </Text>
+                        </LinearGradient>
 
                         <View style={styles.apple}>
-
+                            <Image 
+                                source={require('../images/apple.png')}
+                                style={{width: WIDTH * 0.08,
+                                    height:WIDTH * 0.08}}
+                            />
                         </View>
 
                         <View style={styles.google}>
-                            
+                            <Image 
+                                source={require('../images/Google.png')}
+                                style={{width: WIDTH * 0.08,
+                                    height:WIDTH * 0.08}}
+                            />
                         </View>
                     </View>
-
+                    
+                    <View style={styles.bottomBottomWrapper}>
+                        <Text style={{ color: 'gray', fontFamily: 'Poppins-Light'}}>
+                                Have an Account?  
+                        </Text>
+                        <Text style={{ color: 'white', fontFamily: 'Poppins-Light'}}> 
+                            Sign In 
+                        </Text>
+                    </View>
                 </View>
 			</LinearGradient>
 		</View>
@@ -69,7 +126,24 @@ const CARD_BASE = StyleSheet.create({
         width:'110%',
         height:'70%',
         left: WIDTH * 0.20,
-        transform: [{rotateZ: '-30deg' }, {rotateY: '30deg'}, {rotateX: '55deg'}],
+        transform: [{rotateZ: '-30deg'}, 
+                    {rotateY: '30deg'}, 
+                    {rotateX: '55deg'}],
+    }
+})
+
+const IMAGE_WRAPPER = StyleSheet.create({
+    base: {
+        borderWidth: 2,
+        borderColor: 'white',
+        borderRadius: 15
+    }
+})
+
+const BORDER_WRAPPER = StyleSheet.create({
+    border: {
+        borderWidth: 1,
+        borderColor: 'white',
     }
 })
 
@@ -112,7 +186,9 @@ const styles = StyleSheet.create({
         zIndex: 1,
         top: HEIGHT * 0.23,
         backgroundColor: '#d0b5ec',
-        borderColor: '#d0b5ec'
+        borderColor: '#d0b5ec',
+        paddingHorizontal: 10,
+        paddingVertical: 25
     },
     motto: {
         fontSize: 26,
@@ -120,16 +196,40 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins-Medium'
     },
     bottomMidWrapper: {
-
+        // ...BORDER_WRAPPER.border,
+        flexDirection: 'row',
+        flex: 2,
+        marginVertical: 15,
     },
     startWrapper: {
-        flex: 2.5
-    },
-    google: {
-        flex: 1
+        flex: 2.5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: WIDTH * 0.04,
+        marginRight: WIDTH * 0.02
     },
     apple: {
-        flex: 1
+        flex: 1,
+        ...BORDER_WRAPPER.border,
+        marginRight: WIDTH * 0.02,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+    },
+    google: {
+        flex: 1,
+        ...BORDER_WRAPPER.border,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+    },
+    bottomBottomWrapper: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    bottomTextGray: {
+        fontSize: 14,
+        color: 'gray'
     }
 })
 
