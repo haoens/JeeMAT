@@ -1,12 +1,52 @@
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { FONTS, HEIGHT, WIDTH } from "../constants"
 import Navbar from "./Navbar"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
+import { MotiView } from "moti"
+import { Easing } from "react-native-reanimated"
+import { AnimatePresence } from "moti"
 
-export default function Jeemat(){
+export default function Jeemat({ navigation }){
     
     const [ message, setMessage ] = useState(`How Much Can ${"\n"}I Spend Today?`)
+    const [ pressed, setPressed ] = useState(false)
+    const [ animation, setAnimation ] = useState(false)
+
+
+    const delayCalculation = (n, delay) => {setTimeout(() => {
+        setMessage(`Calculating${".".repeat(n)}`)
+    }, delay * 1)}
+
+
+
+    const showResult = () => {
+        setTimeout(() => {
+            setMessage(`How Much Can ${"\n"}I Spend Today?`)
+            setPressed(false)
+            navigation.navigate('Spend');
+        }, 3000)
+    }
+
+    // console.log(pressed);
+
+    const offAnimation = () => {
+        setTimeout(() => {
+            setAnimation(false)
+        }, 1500)
+    }
+
+    const process = () => {
+        setPressed(true);
+        setAnimation(true);
+        delayCalculation(1, 0);
+        delayCalculation(2, 1000);
+        offAnimation();
+        delayCalculation(3, 2000);
+        showResult();
+        // originalMessage();
+    }
+
 
     return (
         <View style={styles.container}>
@@ -28,8 +68,12 @@ export default function Jeemat(){
                             }}>
                             Tap to Jeemat
                         </Text>
-                        <View style={styles.circleWrapper}>
-                            <View style={{
+                        <TouchableOpacity 
+                            activeOpacity={0.8} 
+                            style={styles.circleWrapper}
+                            onPress={() => {if(!pressed) process()}}
+                        >
+                            {/* <View style={{
                                 width: WIDTH * 0.6,
                                 height: WIDTH * 0.6,
                                 backgroundColor: 'white',
@@ -55,7 +99,8 @@ export default function Jeemat(){
                                         borderRadius: WIDTH * 0.2,
                                         alignItems: 'center',
                                         justifyContent: 'center'
-                                    }}>
+                                    }}> */}
+                                        
                                         <View style={{
                                             width: WIDTH * 0.3,
                                             height: WIDTH * 0.3,
@@ -68,14 +113,38 @@ export default function Jeemat(){
                                                 source={require('../images/Logo.png')}
                                                 style={{
                                                     width: WIDTH * 0.15,
-                                                    height: WIDTH * 0.15
+                                                    height: WIDTH * 0.15,
+                                                    zIndex: 3
                                                 }} 
                                             />
+                                            <AnimatePresence>
+                                                {animation && [...Array(3).keys()].map((index) => {
+                                                return (
+                                                    <MotiView
+                                                        from={{opacity: 1, scale: 1}}
+                                                        animate={{opacity:0, scale: 4}}
+                                                        transition={{
+                                                            type: 'timing',
+                                                            duration: 2000,
+                                                            easing: Easing.out(Easing.ease),
+                                                            delay: index * 300,
+                                                            loop: true,
+                                                        }}
+                                                        exit={{
+                                                            scale: 0,
+                                                            opacity: 1
+                                                        }}
+                                                        key={index}
+                                                        style={{position:'absolute', ...styles.dot}}
+                                                    />
+                                                )})}
+                                            </AnimatePresence>
+                                            
                                         </View>
-                                    </View>
+                                    {/* </View>
                                 </View>
-                            </View>
-                        </View>
+                            </View> */}
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.bottomWrapper}>
                         <Text style={{...FONTS.header, fontSize: 26}}>
@@ -111,7 +180,9 @@ const styles = StyleSheet.create({
     circleWrapper: {
         // borderColor: 'white',
         // borderWidth: 2,
-        flex:1
+        flex:1,
+        alignItems: "center",
+        justifyContent: "center"
     },
     bottomWrapper: {
         flex:1,
@@ -121,4 +192,10 @@ const styles = StyleSheet.create({
         // borderColor: 'white',
         marginTop: 20
     },
+    dot: {
+        width: WIDTH * 0.2,
+        height: WIDTH * 0.2,
+        borderRadius: WIDTH * 0.15,
+        backgroundColor: '#a259b5',
+    }
 })
