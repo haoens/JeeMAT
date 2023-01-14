@@ -1,17 +1,27 @@
 import { StyleSheet, Text, View } from "react-native"
 import { FONTS } from "../constants"
 
-export default function Navbar({ title, position }){
+export default function Navbar({ title, position, hidePeriods }){
     return (
         <View style={styles.container}>
             <Text style={FONTS.header}>
                 {title}
             </Text>
-            <View style={styles.tabPeriods}>
-                <View style={(position === 1) ? styles.tabPeriodActive : styles.tabPeriod}></View>
-                <View style={(position === 2) ? styles.tabPeriodActive : styles.tabPeriod}></View>
-                <View style={(position === 3) ? styles.tabPeriodActive : styles.tabPeriod}></View>
-            </View>
+            { 
+                !hidePeriods &&
+                <View style={styles.tabPeriods}>
+                {[1,2,3].map((value, index) => {
+                    return (
+                        <View 
+                            key={index}
+                            style={(position === value) ?
+                                 styles.tabPeriodActive : 
+                                 styles.tabPeriod}>
+                        </View>
+                    )
+                })}
+                </View>
+            }
         </View>
     )
 }

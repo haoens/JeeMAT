@@ -79,7 +79,7 @@ export default function RevealCoins({route, navigation}){
                     style={{
                         backgroundColor: 'white',
                         paddingHorizontal: 40,
-                        paddingVertical: 30,
+                        paddingVertical: 25,
                         borderRadius: 35,
                         elevation: 4
                     }}>
@@ -90,13 +90,15 @@ export default function RevealCoins({route, navigation}){
                         left: -10,
                         backgroundColor: '#e9dbb4',
                         borderRadius: 30,
-                        padding: 2
+                        padding: 8,
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }}>
                         <Image
-                            source={require('../images/bulb.png')}
+                            source={require('../images/Game.png')}
                             style={{
-                                height: 50,
-                                width: 50,
+                                height: 35,
+                                width: 35,
                                 resizeMode: 'contain'
                             }}
                         >
@@ -108,7 +110,8 @@ export default function RevealCoins({route, navigation}){
                         style={{
                             fontFamily: 'Poppins-Medium',
                             fontSize: 18,
-                            textAlign: 'center'
+                            textAlign: 'center',
+                            lineHeight: 22
                         }}
                     >
                         Play more to earn and exchange for rewards
