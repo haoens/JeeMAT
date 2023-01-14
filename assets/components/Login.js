@@ -67,22 +67,25 @@ export default function Login({ navigation }) {
                     </Text>
 
                     <View style={styles.bottomMidWrapper}>
-                        <LinearGradient 
-                            colors={['#ff739d', '#c375ff', '#7986ff']}
-                            locations={[.3, .67, 1]}
-                            start={{x:0, y:1}} end={{x:1, y:0}} 
-                            style={styles.startWrapper} 
-                            onTouchEnd={() => navigation.navigate('Jeemat')}
-                        >
-                            <Text 
-                                style={{
-                                    color: 'white',
-                                    fontFamily: 'Poppins-Medium'
-                                }}
+                        <TouchableOpacity style={styles.startWrapper}>
+                            <LinearGradient 
+                                colors={['#ff739d', '#c375ff', '#7986ff']}
+                                locations={[.3, .67, 1]}
+                                start={{x:0, y:1}} end={{x:1, y:0}} 
+                                style={styles.startWrapper1} 
+                                onTouchEnd={() => navigation.navigate('Tabs')}
                             >
-                                Get Started
-                            </Text>
-                        </LinearGradient>
+                                <Text 
+                                    style={{
+                                        color: 'white',
+                                        fontFamily: 'Poppins-Medium'
+                                    }}
+                                >
+                                    Get Started
+                                </Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        
 
                         <View style={styles.apple}>
                             <Image 
@@ -102,8 +105,8 @@ export default function Login({ navigation }) {
                     </View>
                     
                     <View style={styles.bottomBottomWrapper}>
-                        <Text style={{ color: 'gray', fontFamily: 'Poppins-Light'}}>
-                                Have an Account?  
+                        <Text style={{ color: 'gray', fontFamily: 'Poppins-Light', marginRight: 5}}>
+                                Have an Account? 
                         </Text>
                         <Text style={{ color: 'white', fontFamily: 'Poppins-Light'}}> 
                             Sign In 
@@ -206,7 +209,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: WIDTH * 0.04,
-        marginRight: WIDTH * 0.02
+        marginRight: WIDTH * 0.02,
+    },
+    startWrapper1: {
+        flex: 2.5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: WIDTH * 0.04,
+        paddingHorizontal: WIDTH * 0.1
+        // marginRight: WIDTH * 0.02
     },
     apple: {
         flex: 1,
