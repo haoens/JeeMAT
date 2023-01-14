@@ -20,7 +20,7 @@ export default function Game({navigation}){
                             elevation: 30,
                         }}
                     />
-                    {(level >= 1) && <Image
+                    {(1 >= 1) && <Image
                         source={require('../images/star.png')}
                         style={{
                             position: 'absolute',
@@ -32,9 +32,16 @@ export default function Game({navigation}){
                     />}
                 </View>
                 
-                <TouchableOpacity>
+                <TouchableOpacity 
+                    style={styles.playWrapper} 
+                    onPress={() => navigation.navigate('Level')}
+                >
                     <LinearGradient 
-                        style={styles.playWrapper}
+                        style={{
+                            paddingVertical: 10,
+                            paddingHorizontal: 20,
+                            borderRadius: 15
+                        }}
                         colors={['#7b1428', '#da1648']}
                         start={{x:0,y:0}}
                         end={{x:1, y:1}}
