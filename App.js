@@ -46,7 +46,7 @@ export default function App() {
       <Provider store={Store}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Level' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Tabs' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Tabs" component={Tabs}/>
             <Stack.Screen name="Spend" component={Spend} />

@@ -24,6 +24,7 @@ export default function Level({navigation}){
     }
 
     const [answered, setAnswered] = useState(false);
+    const [correct, setCorrect] = useState(false);
 
     // useEffect(() => {
     //     setAnswered(false)
@@ -69,7 +70,9 @@ export default function Level({navigation}){
                             justifyContent: 'center',
                             alignItems: 'center'
                         }}
-                        onPress={() => navigation.navigate("RevealCoins")}
+                        onPress={() => navigation.navigate("RevealCoins", {
+                            coinsToAdd: correct ? 15 : 0
+                        })}
                     >
                         <Text
                             style={{
@@ -151,7 +154,10 @@ export default function Level({navigation}){
                                                                 'rgba(170, 253, 150, 0.89)' :
                                                                 'rgba(253, 150, 150, 0.89)'
                                         }}
-                                        onPress={() => setAnswered(true)}
+                                        onPress={() => {
+                                            if (index === questionAnswer.answer) setCorrect(true)
+                                            setAnswered(true)
+                                        }}
                                     >   
 
                                         <View
