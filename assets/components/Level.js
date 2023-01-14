@@ -1,7 +1,8 @@
-import { View, StyleSheet, Text, Image, ImageBackground } from "react-native"
+import { View, StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from "react-native"
 import { HEIGHT, WIDTH } from "../constants"
 import Background from "./Background"
 import React, {useState, useEffect} from "react"
+import RevealCoins from "./RevealCoins"
 
 export default function Level({navigation}){
 
@@ -31,22 +32,65 @@ export default function Level({navigation}){
     function renderLevel(){
         return (
             <View style={styles.wrapper}>
-
-                <Image 
-                    source={require('../images/home.png')}
+                
+                <TouchableOpacity
                     style={{
                         position: 'absolute',
                         zIndex: 2,
-                        height: WIDTH * 0.1,
-                        width: WIDTH * 0.1,
                         top: 9,
                         left: 15
                     }}
-                    onTouchEnd = {() => {
-                        navigation.navigate('Tabs')
-                        setAnswered(false)
-                    }}
-                />
+                >
+
+                    <Image 
+                        source={require('../images/home.png')}
+                        style={{
+                            position: 'absolute',
+                            zIndex: 2,
+                            height: WIDTH * 0.1,
+                            width: WIDTH * 0.1,
+                        }}
+                        onTouchEnd = {() => {
+                            navigation.navigate('Tabs')
+                            setAnswered(false)
+                        }}
+                    />
+
+                </TouchableOpacity>
+                
+                {
+                    answered &&
+                        <TouchableOpacity
+                        style={{
+                            position: 'absolute',
+                            top: 10,
+                            right: 10,
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}
+                        onPress={() => navigation.navigate("RevealCoins")}
+                    >
+                        <Text
+                            style={{
+                                fontFamily: 'Poppins-Medium',
+                                fontSize: 12
+                            }}
+                        >
+                            VIEW YOUR COINS
+                        </Text>
+
+                        <Image
+                            source={require('../images/star.png')}
+                            style={{
+                                height: 30,
+                                width: 30
+                            }}
+                        />
+
+                    </TouchableOpacity> 
+                }      
+
                 <Image 
                     source={require('../images/star.png')}
                     style={{
@@ -89,7 +133,7 @@ export default function Level({navigation}){
                         <View style={styles.answerWrapper}>
                             {questionAnswer.choices.map((choice, index) => {
                                 return (
-                                    <View 
+                                    <TouchableOpacity 
                                         key={index}
                                         style={{
                                             width: WIDTH * 0.8,
@@ -107,7 +151,7 @@ export default function Level({navigation}){
                                                                 'rgba(170, 253, 150, 0.89)' :
                                                                 'rgba(253, 150, 150, 0.89)'
                                         }}
-                                        onTouchEnd={() => setAnswered(true)}
+                                        onPress={() => setAnswered(true)}
                                     >   
 
                                         <View
@@ -162,7 +206,7 @@ export default function Level({navigation}){
                                                 {choice}
                                             </Text>
                                         </View>     
-                                    </View>
+                                    </TouchableOpacity>
                                 )
                             })}
                         </View>

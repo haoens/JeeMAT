@@ -13,6 +13,9 @@ import Login from './assets/components/Login';
 import Tabs from './assets/components/Tabs';
 import Game from './assets/components/Game';
 import Level from './assets/components/Level';
+import { Provider } from 'react-redux';
+import { Store } from './src/redux/store';
+import RevealCoins from './assets/components/RevealCoins';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -40,16 +43,19 @@ export default function App() {
   
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <NavigationContainer>
-        <StatusBar style="auto" hidden/>
-        <Stack.Navigator initialRouteName='Game' screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Tabs" component={Tabs}/>
-          <Stack.Screen name="Spend" component={Spend} />
-          <Stack.Screen name="Game" component={Game} />
-          <Stack.Screen name="Level" component={Level} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Provider store={Store}>
+        <NavigationContainer>
+          <StatusBar style="auto" hidden/>
+          <Stack.Navigator initialRouteName='Level' screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Tabs" component={Tabs}/>
+            <Stack.Screen name="Spend" component={Spend} />
+            <Stack.Screen name="Game" component={Game} />
+            <Stack.Screen name="Level" component={Level} />
+            <Stack.Screen name="RevealCoins" component={RevealCoins} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
     </View>
   );
 }
