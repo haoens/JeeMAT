@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-jeemat-staging-92943-authRole",
+      "UnauthRoleArn": "arn:aws:iam::432160007291:role/amplify-jeemat-staging-92943-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::432160007291:role/amplify-jeemat-staging-92943-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-jeemat-staging-92943-deployment",
+      "UnauthRoleName": "amplify-jeemat-staging-92943-unauthRole",
+      "StackName": "amplify-jeemat-staging-92943",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:432160007291:stack/amplify-jeemat-staging-92943/cedfd140-97db-11ed-a5cb-02906a0825d8",
+      "AmplifyAppId": "d3ojd4sds2140d"
+    },
+    "categories": {
+      "auth": {
+        "JeeMAT": {}
+      }
+    }
+  }
+}

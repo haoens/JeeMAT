@@ -13,11 +13,14 @@ import Login from './assets/components/Login';
 import Tabs from './assets/components/Tabs';
 import Game from './assets/components/Game';
 import Level from './assets/components/Level';
+import Signup from './assets/components/Signup';
 import { Provider } from 'react-redux';
 import { Store } from './src/redux/store';
 import RevealCoins from './assets/components/RevealCoins';
+import { Amplify } from 'aws-amplify'
+import awsconfig from './src/aws-exports'
 
-
+Amplify.configure(awsconfig)
 SplashScreen.preventAutoHideAsync();
 const Stack = createNativeStackNavigator()
 
@@ -46,7 +49,8 @@ export default function App() {
       <Provider store={Store}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Signup' screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Tabs" component={Tabs}/>
             <Stack.Screen name="Spend" component={Spend} />
