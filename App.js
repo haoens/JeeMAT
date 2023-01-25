@@ -8,6 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Jeemat from './assets/components/Jeemat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Account from './assets/components/Account';
 import Spend from './assets/components/Spend';
 import Login from './assets/components/Login';
 import Tabs from './assets/components/Tabs';
@@ -15,6 +16,7 @@ import Game from './assets/components/Game';
 import Level from './assets/components/Level';
 import Signup from './assets/components/Signup';
 import RevealCoins from './assets/components/RevealCoins';
+import Savings from './assets/components/Savings';
 import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
 import Test from './assets/components/Test';
@@ -50,7 +52,7 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Tabs' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Account' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="Test" component={Test} />
             <Stack.Screen name="Login" component={Login} />
@@ -59,6 +61,8 @@ export default function App() {
             <Stack.Screen name="Game" component={Game} />
             <Stack.Screen name="Level" component={Level} />
             <Stack.Screen name="RevealCoins" component={RevealCoins} />
+            <Stack.Screen name="Account" component={Account} />
+            <Stack.Screen name="Savings" component={Savings} />
           </Stack.Navigator>
         </NavigationContainer>
     </View>

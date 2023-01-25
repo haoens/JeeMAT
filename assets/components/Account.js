@@ -70,7 +70,7 @@ export default function Account({navigation}){
                         <TouchableOpacity 
                             style={styles.savingsGoal} 
                             activeOpacity={0.5}
-                            onPress={() => navigation.navigate('Jeemat')}
+                            onPress={() => navigation.navigate('Savings')}
                         >
 
                             <View

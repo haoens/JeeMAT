@@ -1,13 +1,34 @@
 export const schema = {
     "models": {
-        "UntitledModel": {
-            "name": "UntitledModel",
+        "Biometric": {
+            "name": "Biometric",
             "fields": {
                 "id": {
                     "name": "id",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "age": {
+                    "name": "age",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "gender": {
+                    "name": "gender",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -28,7 +49,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "UntitledModels",
+            "pluralName": "Biometrics",
             "attributes": [
                 {
                     "type": "model",
@@ -56,5 +77,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "278255c09f0718d6936d7a00235d4e94"
+    "version": "7770ad993e8d90b4842346e33e1ef9c1"
 };

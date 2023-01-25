@@ -4,8 +4,8 @@ import { schema } from './schema';
 
 
 
-const { UntitledModel } = initSchema(schema);
+const { Biometric } = initSchema(schema);
 
 export {
-  UntitledModel
+  Biometric
 };

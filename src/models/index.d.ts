@@ -6,28 +6,34 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
-type EagerUntitledModel = {
+type EagerBiometric = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<UntitledModel, 'id'>;
+    identifier: ManagedIdentifier<Biometric, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly name?: string | null;
+  readonly age?: number | null;
+  readonly gender?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-type LazyUntitledModel = {
+type LazyBiometric = {
   readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<UntitledModel, 'id'>;
+    identifier: ManagedIdentifier<Biometric, 'id'>;
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly name?: string | null;
+  readonly age?: number | null;
+  readonly gender?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
 
-export declare type UntitledModel = LazyLoading extends LazyLoadingDisabled ? EagerUntitledModel : LazyUntitledModel
+export declare type Biometric = LazyLoading extends LazyLoadingDisabled ? EagerBiometric : LazyBiometric
 
-export declare const UntitledModel: (new (init: ModelInit<UntitledModel>) => UntitledModel) & {
-  copyOf(source: UntitledModel, mutator: (draft: MutableModel<UntitledModel>) => MutableModel<UntitledModel> | void): UntitledModel;
+export declare const Biometric: (new (init: ModelInit<Biometric>) => Biometric) & {
+  copyOf(source: Biometric, mutator: (draft: MutableModel<Biometric>) => MutableModel<Biometric> | void): Biometric;
 }

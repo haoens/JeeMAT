@@ -27,7 +27,7 @@ export default function Spend({navigation}){
                 <LinearGradient 
                     style={styles.content} 
                     colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} 
-                    locations={[0, 1]}
+                    locations={[0, 0.8]}
                 >
                     
                     <View style={styles.mainContent}>   
