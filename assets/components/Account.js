@@ -1,11 +1,24 @@
-import { Image, StyleSheet, Text, View, TouchableOpacity } from "react-native"
+import { Image, StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from "react-native"
 import { FONTS, HEIGHT, WIDTH } from "../constants"
 import Navbar from "./Navbar"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
 import { Calendar } from "react-native-calendars"
+import { Colors } from "react-native/Libraries/NewAppScreen"
 
-export default function Account(){
+export default function Account({navigation}){
+
+    const [asset, setAsset] = useState(10900.67);
+    const amountSaved = 9000;
+    const goalAmount = 90000;
+    const totalIncome = 8378.88;
+    const moneySpent = 60.50;
+
+    const MYR = new Intl.NumberFormat('ms-MY', {
+        style: 'currency',
+        currency: 'MYR',
+    });
+    
     return (
         <View style={styles.container}>
             <LinearGradient 
@@ -23,7 +36,7 @@ export default function Account(){
                     colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} 
                     locations={[0, 0.7]}
                 >
-                    <View style={styles.accountsContent}>
+                    <SafeAreaView style={styles.accountsContent}>
                     <View style={styles.topWrapper}>
                         <View style={styles.profilePictureWrapper}>
                             <View style={styles.profilePicture}>
@@ -39,22 +52,169 @@ export default function Account(){
                     </View>
                     
                     <LinearGradient style={styles.bottomWrapper} colors={["rgba(0,0,0,0.25)", "black"]}>
+                        
 
-                        <View style={styles.savingsGoal}>
-                            <Text style={styles.accountsContentH1}>SAVINGS GOAL</Text>
+                        <View style={styles.asset}>
+                                <Text style={styles.accountsContentH1}>TOTAL ASSET</Text>
+                                <Text
+                                    style={{
+                                        color: '#ADF6A1',
+                                        fontFamily: 'Poppins-ExtraBold',
+                                        fontSize: 22,
+                                        marginTop: 5
+                                    }}>
+                                    {MYR.format(asset)}
+                                </Text>
                         </View>
 
-                        <View style={styles.incomeExpenses}>
-                            <TouchableOpacity style={styles.income} activeOpacity={0.5}>
-                                <Text style={styles.accountsContentH1}>INCOME</Text>
+                        <TouchableOpacity 
+                            style={styles.savingsGoal} 
+                            activeOpacity={0.5}
+                            onPress={() => navigation.navigate('Jeemat')}
+                        >
+
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    flex: 1,
+                                    marginBottom: 5,
+                                }}
+                            >
+
+                                <Text style={styles.accountsContentH1}>SAVINGS GOAL</Text>
+                                
+                            </View>
+                                
+                            {renderArrow()}
+
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    width: WIDTH * 0.4,
+                                    backgroundColor: 'white',
+                                    flex: 1.5,
+                                    marginBottom: 5,
+                                    borderRadius: 20,
+                                    overflow: 'hidden'
+                                }}
+                            >
+                                <View
+                                    style={{
+                                        backgroundColor: '#21A126',
+                                        flex: amountSaved / goalAmount,
+                                        borderRadius: 20,
+                                    }}>
                                     
+                                </View>
+                            </View>
+
+                            <View
+                                style={{
+                                    flex: 1,
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    width: WIDTH * 0.5
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        color: 'rgba(173, 246, 161, 0.95)',
+                                        fontFamily: 'Poppins-Medium',
+                                        fontSize: 12
+                                    }}
+                                >
+                                    {MYR.format(amountSaved)}
+                                </Text>
+
+                                <Text
+                                    style={{
+                                        color: 'white',
+                                        fontFamily: 'Poppins-Medium',
+                                        fontSize: 12
+                                    }}
+                                >
+                                    {MYR.format(goalAmount)}
+                                </Text>
+                            </View>
+                            
+                        </TouchableOpacity>
+
+                        <View style={styles.incomeExpenses}>
+
+                            <TouchableOpacity style={styles.income} activeOpacity={0.5}>
+
+                                <Text 
+                                    style={{
+                                        ...styles.accountsContentH1,
+                                        alignSelf: 'flex-start',
+                                        marginBottom: 30
+                                    }}
+                                >
+                                    INCOME
+                                </Text>
+
+                                {renderArrow()}
+
+                                <View style={{marginBottom: 24}}>
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Poppins-Medium',
+                                            color: 'white',
+                                            fontSize: 14
+                                        }}
+                                    >
+                                        TOTAL INCOME :
+                                    </Text>
+
+                                    <Text
+                                        style={{
+                                            fontFamily:"Poppins-Bold",
+                                            color: 'rgba(173, 246, 161, 0.95)',
+                                            fontSize: 22,
+                                            textAlign: 'center'
+                                        }}
+                                    >
+                                        {MYR.format(totalIncome)}
+                                    </Text>
+
+                                    
+                                </View>
+
+                                <Text
+                                    style={{
+                                        fontSize: 10,
+                                        color: 'rgba(215, 254, 223, 0.47)'
+                                    }}
+                                >
+                                        UP BY 2% COMPARED TO LAST MONTH
+                                </Text>
+                                
                             </TouchableOpacity>
 
                             <View style={styles.expenses}>
-                                <Text style={styles.accountsContentH1}>EXPENSES</Text>
-                                <Calendar hideArrows disableMonthChange style={{borderRadius: 10}}
+                                <Text 
+                                    style={{
+                                        ...styles.accountsContentH1,
+                                        alignSelf: 'flex-start',
+                                        marginBottom: 10
+                                    }}
+                                >
+                                    EXPENSES
+                                </Text>
+
+                                {renderArrow()}
+
+                                <Calendar 
+                                    hideArrows
+                                    disableMonthChange
+                                    style={{
+                                        borderRadius: 10,
+                                        marginBottom: 10
+                                    }}
                                     theme={{
-                                        textDayFontSize:6,
+                                        textDayFontSize:7,
                                         textMonthFontSize:12,
                                         textDayHeaderFontSize:6,
                                         dayTextColor: 'white',
@@ -111,15 +271,53 @@ export default function Account(){
                                     //         </View>
                                     //     )
                                     // }} 
-                                    />
+                                />
+                                
+                                <View>
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Poppins-Medium',
+                                            color: 'white',
+                                            fontSize: 12,
+                                            textAlign: 'center'
+                                        }}
+                                    >
+                                        MONEY SPENT(TODAY) : 
+                                    </Text>
+
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Poppins-ExtraBold',
+                                            color: 'rgba(255, 147, 189, 0.95)',
+                                            fontSize: 20,
+                                            textAlign: 'center'
+                                        }}>
+                                        {MYR.format(moneySpent)}
+                                    </Text>
+                                </View>
                             </View>
                         </View>
                     </LinearGradient>
-                </View>
+                </SafeAreaView>
                 </LinearGradient>
             </LinearGradient>
             
         </View> 
+    )
+}
+
+function renderArrow(){
+    return (
+        <Image 
+            source={require('../images/arrow.png')}
+            style={{
+                resizeMode: 'contain',
+                height: 15,
+                position: 'absolute',
+                top: 10,
+                right: 10
+            }}
+        />
     )
 }
 
@@ -134,10 +332,11 @@ const styles = StyleSheet.create({
         flex:15
     },
     topWrapper: {
-        flex: 2.5,
+        flex: 2,
+        zIndex: 2
     },
     bottomWrapper: {
-        flex: 7,
+        flex: 9,
         // backgroundColor: "rgba(0,0,0,0.4)",
         borderTopLeftRadius: WIDTH * 0.05,
         borderTopRightRadius: WIDTH * 0.05,
@@ -158,7 +357,6 @@ const styles = StyleSheet.create({
         flex: 1
     },
     accountsContentH1: {
-
         color: 'white',
         fontFamily: 'Poppins-Bold',
         fontSize: 15, 
@@ -183,20 +381,34 @@ const styles = StyleSheet.create({
     //     width: WIDTH,
     //     align
     // },
+    asset: {
+        flex: 0.8,
+        borderColor: 'rgba(255, 255, 255, 0.17)',
+        borderWidth: 1,
+        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+        borderRadius: WIDTH * 0.08,
+        marginVertical: 10,
+        alignItems: "center",
+        width: WIDTH * 0.8,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     savingsGoal: {
         flex: 1,
-        borderColor: 'rgba(202, 205, 213, .5)',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
         borderWidth: 1,
-        backgroundColor: 'rgba(202, 205, 213, 0.15)',
-        borderRadius: WIDTH * 0.08,
-        marginVertical: 5,
+        backgroundColor: 'rgba(255, 255, 255, 0.07)',
+        borderRadius: WIDTH * 0.05,
+        marginVertical: 10,
         alignItems: "center",
-        width: WIDTH * 0.7,
-        paddingVertical: 5,
+        width: WIDTH * 0.8,
+        paddingVertical: 10,
         paddingHorizontal: 20,
     },
     incomeExpenses: {
-        flex: 3,
+        flex: 2.5,
         flexDirection: 'row',
         // borderColor: 'black',
         // borderWidth: 1,
@@ -208,12 +420,12 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(202, 205, 213, .2)',
         borderWidth: 1,
         backgroundColor: 'rgba(100, 100, 100, 0.15)',
-        borderRadius: WIDTH * 0.1,
+        borderRadius: WIDTH * 0.08,
         marginLeft: 10,
         marginRight: 5,
         paddingVertical: 10,
-        paddingHorizontal: 5,
-        alignItems: "center"
+        paddingHorizontal: 15,
+        alignItems: "center",
     },
     expenses: {
         flex: 1,
@@ -221,11 +433,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         backgroundColor: 'rgba(100, 100, 100, 0.15)',
         // backgroundColor: 'rgba(202, 205, 213, 0.1)',
-        borderRadius: WIDTH * 0.1,
+        borderRadius: WIDTH * 0.08,
         marginLeft: 5,
         marginRight: 10,
         paddingVertical: 10,
-        paddingHorizontal: 5,
+        paddingHorizontal: 15,
         alignItems: "center"
     }
 })

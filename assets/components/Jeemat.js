@@ -2,16 +2,19 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { FONTS, HEIGHT, WIDTH } from "../constants"
 import Navbar from "./Navbar"
 import { LinearGradient } from "expo-linear-gradient"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { MotiView } from "moti"
 import { Easing } from "react-native-reanimated"
 import { AnimatePresence } from "moti"
+import { DataStore } from '@aws-amplify/datastore';
 
 export default function Jeemat({ navigation }){
     
     const [ message, setMessage ] = useState(`How Much Can ${"\n"}I Spend Today?`)
     const [ pressed, setPressed ] = useState(false)
     const [ animation, setAnimation ] = useState(false)
+
+
 
 
     const delayCalculation = (n, delay) => {setTimeout(() => {

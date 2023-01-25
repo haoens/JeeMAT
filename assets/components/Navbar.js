@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from "react-native"
+import { SafeAreaView, StyleSheet, Text, View } from "react-native"
 import { FONTS } from "../constants"
 
 export default function Navbar({ title, position, hidePeriods }){
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text style={FONTS.header}>
                 {title}
             </Text>
@@ -22,7 +22,7 @@ export default function Navbar({ title, position, hidePeriods }){
                 })}
                 </View>
             }
-        </View>
+        </SafeAreaView>
     )
 }
 

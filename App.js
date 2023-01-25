@@ -14,11 +14,11 @@ import Tabs from './assets/components/Tabs';
 import Game from './assets/components/Game';
 import Level from './assets/components/Level';
 import Signup from './assets/components/Signup';
-import { Provider } from 'react-redux';
-import { Store } from './src/redux/store';
 import RevealCoins from './assets/components/RevealCoins';
 import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
+import Test from './assets/components/Test';
+import { LogBox } from 'react-native';
 
 Amplify.configure(awsconfig)
 SplashScreen.preventAutoHideAsync();
@@ -43,14 +43,16 @@ export default function App() {
     return null;
   }
   
+  LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+  LogBox.ignoreAllLogs();//Ignore all log notifications
   
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
-      <Provider store={Store}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Signup' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Tabs' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Signup" component={Signup} />
+            <Stack.Screen name="Test" component={Test} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Tabs" component={Tabs}/>
             <Stack.Screen name="Spend" component={Spend} />
@@ -59,7 +61,6 @@ export default function App() {
             <Stack.Screen name="RevealCoins" component={RevealCoins} />
           </Stack.Navigator>
         </NavigationContainer>
-      </Provider>
     </View>
   );
 }

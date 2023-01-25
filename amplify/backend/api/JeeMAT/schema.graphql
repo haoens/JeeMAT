@@ -1,3 +1,7 @@
-type UntitledModel @model @auth(rules: [{allow: public}]) {
+type Biometric @model @auth(rules: [{allow: public}]) {
   id: ID!
+  name: String
+  age: Int
+  gender: String
 }
+ 

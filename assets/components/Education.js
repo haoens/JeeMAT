@@ -89,7 +89,7 @@ export default function Education({ navigation }){
                                     source={require('../images/courses.png')}
                                     style={{
                                         flex: 1,
-                                        resizeMode: 'contain'
+                                        resizeMode: 'contain',
                                     }}
                                 />
                                 <Text
@@ -397,6 +397,8 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         borderRadius: 19,
         backgroundColor: 'white',
+        maxHeight: 120,
+        padding: 5,
         elevation: 3
     },
     mainContent: {
