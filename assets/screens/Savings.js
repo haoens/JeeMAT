@@ -1,6 +1,6 @@
 import { SafeAreaView, StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { WIDTH } from "../constants";
+import { WIDTH, HEIGHT } from "../constants";
 import 'intl';
 import 'intl/locale-data/jsonp/ms'
 
@@ -61,127 +61,135 @@ export default function Savings({ navigation }){
                     colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} 
                     locations={[0, 1]}
                 >
-                    <SafeAreaView style={styles.topWrapper}>
+                    <SafeAreaView style={{flex: 1}}>
                         
-                        <View 
-                            style={{
-                                flexDirection: 'row', 
-                                alignItems: 'center', 
-                                justifyContent: 'center'
-                            }}
+                        <View
+                            style={styles.topWrapper}
                         >
-                            
-                            <TouchableOpacity
+                            <View 
                                 style={{
-                                    position: 'absolute',
-                                    left: 0
+                                    flexDirection: 'row', 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center',
+                                    flex: 0.5,
                                 }}
-                                onPress={() => navigation.navigate("Account")}
                             >
-                                <Image
-                                    source={require('../images/arrow.png')}
+                                
+                                <TouchableOpacity
                                     style={{
-                                        transform: [{scaleX: -1}],
-                                        height: 20,
-                                        resizeMode: 'contain'
+                                        position: 'absolute',
+                                        left: 0
+                                    }}
+                                    onPress={() => navigation.navigate("Account")}
+                                >
+                                    <Image
+                                        source={require('../images/arrow.png')}
+                                        style={{
+                                            transform: [{scaleX: -1}],
+                                            height: 20,
+                                            resizeMode: 'contain'
+                                        }}
+                                    >
+                                    </Image>
+                                </TouchableOpacity>
+                                
+
+                            
+                                <Text
+                                    style={{
+                                        textAlign: 'center',
+                                        fontFamily: 'Poppins-ExtraBold',
+                                        color: 'white',
+                                        fontSize: 18,
                                     }}
                                 >
-                                </Image>
-                            </TouchableOpacity>
+                                    SafeHouse
+                                </Text>
+                            </View>
                             
 
-                        
-                            <Text
+                            <View
                                 style={{
-                                    textAlign: 'center',
-                                    fontFamily: 'Poppins-ExtraBold',
-                                    color: 'white',
-                                    fontSize: 18,
+                                    flex: 3,
+                                    flexDirection: "row",
+                                    justifyContent: 'center',
+                                    marginVertical: 20
+                                }}>
+                                <View
+                                    style={{
+                                        backgroundColor: 'white',
+                                        width: HEIGHT * 0.2,
+                                        height: HEIGHT * 0.2,
+                                        borderRadius: HEIGHT * 0.2,                            
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        padding: 30,
+                                        elevation: 10
+                                    }}>
+                                        <Image
+                                            style={{
+                                                resizeMode: 'contain',
+                                                flex: 1,
+                                                aspectRatio: 1
+                                            }} 
+                                            source={require('../images/bank.png')}
+                                        />
+                                </View>
+                            </View>
+
+                            <View
+                                style={{
+                                    flex: 1.5,
+                                    borderColor: 'rgba(255, 255, 255, 0.17)',
+                                    borderWidth: 1,
+                                    borderRadius: 20,
+                                    paddingVertical: 10,
+                                    marginHorizontal: 50,
+                                    flexDirection: 'row'
                                 }}
                             >
-                                SAVINGS
-                            </Text>
+                                <View
+                                    style={[styles.baseSetting]}
+                                >
+                                    <View
+                                        style={[styles.settingImageWrapper]}
+                                    >
+                                        <Image
+                                            style={styles.settingImage}
+                                            source={require('../images/error.png')}
+                                        />
+                                    </View>
+
+                                    <Text style={styles.settingText}>
+                                        Error
+                                    </Text>
+                                </View>
+                                
+                                <View
+                                    style={[styles.baseSetting]}
+                                >
+                                    <View
+                                        style={[styles.settingImageWrapper]}
+                                    >
+                                        <Image
+                                            style={styles.settingImage}
+                                            source={require('../images/download.png')}
+                                        />
+                                    </View>
+
+                                    <Text style={styles.settingText}>
+                                        Download
+                                    </Text>
+                                </View>
+                            </View>
                         </View>
                         
-
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                justifyContent: 'center',
-                                marginVertical: 16
-                            }}>
-                            <View
-                                style={{
-                                    backgroundColor: 'white',
-                                    width: WIDTH * 0.4,
-                                    height: WIDTH * 0.4,
-                                    borderRadius: WIDTH * 0.2,                            
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    padding: 30,
-                                    elevation: 10
-                                }}>
-                                    <Image
-                                        style={{
-                                            resizeMode: 'contain',
-                                            flex: 1,
-                                            aspectRatio: 1
-                                        }} 
-                                        source={require('../images/bank.png')}
-                                    />
-                            </View>
-                        </View>
-
-                        <View
-                            style={{
-                                borderColor: 'rgba(255, 255, 255, 0.17)',
-                                borderWidth: 1,
-                                borderRadius: 20,
-                                paddingVertical: 15,
-                                marginHorizontal: 20,
-                                flexDirection: 'row'
-                            }}
-                        >
-                            <View
-                                style={[styles.baseSetting]}
-                            >
-                                <View
-                                    style={[styles.settingImageWrapper]}
-                                >
-                                    <Image
-                                        style={styles.settingImage}
-                                        source={require('../images/error.png')}
-                                    />
-                                </View>
-
-                                <Text style={styles.settingText}>
-                                    Error
-                                </Text>
-                            </View>
+                    
                             
-                            <View
-                                style={[styles.baseSetting]}
-                            >
-                                <View
-                                    style={[styles.settingImageWrapper]}
-                                >
-                                    <Image
-                                        style={styles.settingImage}
-                                        source={require('../images/download.png')}
-                                    />
-                                </View>
-
-                                <Text style={styles.settingText}>
-                                    Download
-                                </Text>
-                            </View>
-                        </View>
-                    </SafeAreaView>
-
-                    <View style={styles.bottomWrapper}>
+                        <View style={styles.bottomWrapper}>
                             <View
                                 style={{
-                                    flex: 1,
+                                    flex: 0.8,
                                     flexDirection: 'row',
                                     justifyContent: 'space-between',
                                     // borderColor: 'white',
@@ -197,7 +205,7 @@ export default function Savings({ navigation }){
                                         
                                     }}
                                 >
-                                    JeeMAT SafeHouse:
+                                    Saving Goals:
                                 </Text>
 
                                 
@@ -270,7 +278,10 @@ export default function Savings({ navigation }){
                                 </LinearGradient>
                             </TouchableOpacity>
 
-                    </View>
+                        </View>
+
+                    </SafeAreaView>
+                    
                 </LinearGradient>
             </LinearGradient>
         </View>
@@ -398,12 +409,13 @@ const styles = StyleSheet.create({
         // borderColor: 'white'
     },
     topWrapper: {
-        flex: 2,
+        flex: 1.8,
         zIndex: 2,
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        marginVertical: 15
     },
     bottomWrapper: {
-        flex: 2.5,
+        flex: 2,
         // backgroundColor: "rgba(0,0,0,0.4)",
         borderTopLeftRadius: WIDTH * 0.05,
         borderTopRightRadius: WIDTH * 0.05,

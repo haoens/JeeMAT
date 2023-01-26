@@ -30,6 +30,7 @@ export default function Savings1({navigation}){
                     <SafeAreaView
                         style={{
                             flex: 1,
+                            marginVertical: 20
                         }}
                     >
 
@@ -226,7 +227,7 @@ export default function Savings1({navigation}){
                                         borderRadius: 20,
                                         padding: 15,
                                         flex: 1,
-                                        flexDirection: 'column'
+                                        // flexDirection: 'column'
                                     }}
                                 >
 
@@ -248,11 +249,12 @@ export default function Savings1({navigation}){
                                         style={{
                                             justifyContent: 'flex-start',
                                             alignItems: 'center',
-                                            flex: 2
+                                            flex: 2,
+                                            // borderWidth: 2,
                                         }}
                                     >
                                         <TextInput
-                                            style={styles.saveAmountText}
+                                            style={[styles.saveAmountText, {height: 60, width: WIDTH * 0.8}]}
                                             value={amount}
                                             keyboardType='numeric'
                                             placeholder="1000.00"
@@ -377,7 +379,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     content: {
-        flex: 1
+        flex: 1,
     },
     baseTermWrapper: {
         flex: 1,
@@ -409,6 +411,7 @@ const styles = StyleSheet.create({
         fontFamily: "Poppins-ExtraBold",
         fontSize: 36,
         color: 'rgba(219, 248, 236, 1)',
+
     },
     highlightedTipText: {
         color: 'rgba(173, 246, 161, 0.95)',
