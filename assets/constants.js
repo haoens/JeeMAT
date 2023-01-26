@@ -11,3 +11,13 @@ export const FONTS = StyleSheet.create({
 
 export const WIDTH = Dimensions.get('screen').width;
 export const HEIGHT = Dimensions.get('screen').height;
+
+export const TEST_USER = {
+    email: "testuser@email.com",
+    daily_budget: 60
+}
+
+export const MYR = new Intl.NumberFormat('ms-MY', {
+    style: 'currency',
+    currency: 'MYR',
+});

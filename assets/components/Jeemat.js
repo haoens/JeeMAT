@@ -7,6 +7,9 @@ import { MotiView } from "moti"
 import { Easing } from "react-native-reanimated"
 import { AnimatePresence } from "moti"
 import { DataStore } from '@aws-amplify/datastore';
+import { Click } from "../../src/models"
+import { TEST_USER } from "../constants"
+import { Auth } from 'aws-amplify';
 
 export default function Jeemat({ navigation }){
     
@@ -14,6 +17,18 @@ export default function Jeemat({ navigation }){
     const [ pressed, setPressed ] = useState(false)
     const [ animation, setAnimation ] = useState(false)
 
+
+    async function getUser(){
+        try {
+            const { attributes } = await Auth.currentAuthenticatedUser();
+            console.log(attributes)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+    
+    
 
 
 
@@ -39,13 +54,32 @@ export default function Jeemat({ navigation }){
         }, 1500)
     }
 
-    const process = () => {
+    async function createClick(){
+        const newClick = await DataStore.save(
+            new Click({
+                user_id: TEST_USER.email,
+                daily_budget: TEST_USER.daily_budget
+            })
+        );
+        console.log(JSON.stringify(newClick))
+    }
+
+    const process = async () => {
+
+        
         setPressed(true);
         setAnimation(true);
         delayCalculation(1, 0);
         delayCalculation(2, 1000);
-        offAnimation();
         delayCalculation(3, 2000);
+        try {
+            await createClick();
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+        offAnimation();
         showResult();
         // originalMessage();
     }

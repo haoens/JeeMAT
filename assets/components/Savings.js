@@ -252,7 +252,7 @@ export default function Savings({ navigation }){
                                         paddingVertical: 20,
                                         paddingHorizontal: 15
                                     }} 
-                                    onTouchEnd={() => navigation.navigate('Tabs')}
+                                    onTouchEnd={() => navigation.navigate('Savings1')}
                                 >
                                     <Text
                                         style={{

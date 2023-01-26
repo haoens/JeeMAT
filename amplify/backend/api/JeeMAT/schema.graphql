@@ -1,3 +1,24 @@
+type Click @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user_id: AWSEmail
+  daily_budget: Int
+}
+
+type Goal @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  user_id: AWSEmail
+  type: String
+  name: String
+  amount: Float
+  days_to_save: Int
+  method: String
+  frequency: String
+  status: String
+  savings_cumulated: String
+  days_late: Int
+  savings_late: Float
+}
+
 type Biometric @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String

@@ -6,6 +6,84 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 
 
 
+type EagerClick = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Click, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly user_id?: string | null;
+  readonly daily_budget?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyClick = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Click, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly user_id?: string | null;
+  readonly daily_budget?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Click = LazyLoading extends LazyLoadingDisabled ? EagerClick : LazyClick
+
+export declare const Click: (new (init: ModelInit<Click>) => Click) & {
+  copyOf(source: Click, mutator: (draft: MutableModel<Click>) => MutableModel<Click> | void): Click;
+}
+
+type EagerGoal = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Goal, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly user_id?: string | null;
+  readonly type?: string | null;
+  readonly name?: string | null;
+  readonly amount?: number | null;
+  readonly days_to_save?: number | null;
+  readonly method?: string | null;
+  readonly frequency?: string | null;
+  readonly status?: string | null;
+  readonly savings_cumulated?: string | null;
+  readonly days_late?: number | null;
+  readonly savings_late?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyGoal = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Goal, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly user_id?: string | null;
+  readonly type?: string | null;
+  readonly name?: string | null;
+  readonly amount?: number | null;
+  readonly days_to_save?: number | null;
+  readonly method?: string | null;
+  readonly frequency?: string | null;
+  readonly status?: string | null;
+  readonly savings_cumulated?: string | null;
+  readonly days_late?: number | null;
+  readonly savings_late?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Goal = LazyLoading extends LazyLoadingDisabled ? EagerGoal : LazyGoal
+
+export declare const Goal: (new (init: ModelInit<Goal>) => Goal) & {
+  copyOf(source: Goal, mutator: (draft: MutableModel<Goal>) => MutableModel<Goal> | void): Goal;
+}
+
 type EagerBiometric = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Biometric, 'id'>;

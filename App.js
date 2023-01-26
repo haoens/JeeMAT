@@ -17,6 +17,7 @@ import Level from './assets/components/Level';
 import Signup from './assets/components/Signup';
 import RevealCoins from './assets/components/RevealCoins';
 import Savings from './assets/components/Savings';
+import Savings1 from './assets/components/Savings1';
 import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
 import Test from './assets/components/Test';
@@ -52,7 +53,7 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Account' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Savings1' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="Test" component={Test} />
             <Stack.Screen name="Login" component={Login} />
@@ -63,6 +64,7 @@ export default function App() {
             <Stack.Screen name="RevealCoins" component={RevealCoins} />
             <Stack.Screen name="Account" component={Account} />
             <Stack.Screen name="Savings" component={Savings} />
+            <Stack.Screen name="Savings1" component={Savings1} />
           </Stack.Navigator>
         </NavigationContainer>
     </View>

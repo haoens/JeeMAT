@@ -4,8 +4,10 @@ import { schema } from './schema';
 
 
 
-const { Biometric } = initSchema(schema);
+const { Click, Goal, Biometric } = initSchema(schema);
 
 export {
+  Click,
+  Goal,
   Biometric
 };
