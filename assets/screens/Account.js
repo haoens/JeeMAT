@@ -1,10 +1,12 @@
 import { Image, StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from "react-native"
 import { FONTS, HEIGHT, WIDTH } from "../constants"
-import Navbar from "./Navbar"
+import Navbar from "../components/Navbar"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
 import { Calendar } from "react-native-calendars"
 import { Colors } from "react-native/Libraries/NewAppScreen"
+import 'intl';
+import 'intl/locale-data/jsonp/ms'
 
 export default function Account({navigation}){
 
@@ -83,7 +85,7 @@ export default function Account({navigation}){
                                 }}
                             >
 
-                                <Text style={styles.accountsContentH1}>SAVINGS GOAL</Text>
+                                <Text style={styles.accountsContentH1}>JeeMAT SafeHouse</Text>
                                 
                             </View>
                                 

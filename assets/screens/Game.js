@@ -2,7 +2,7 @@ import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
 import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native"
 import { WIDTH, HEIGHT } from "../constants"
-import Background from "./Background"
+import Background from "../components/Background"
 
 export default function Game({navigation}){
     

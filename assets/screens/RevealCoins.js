@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import Background from './Background'
+import Background from '../components/Background'
 import React, { useState } from 'react'
 import { HEIGHT, WIDTH } from '../constants'
 

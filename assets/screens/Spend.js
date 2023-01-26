@@ -1,7 +1,7 @@
 import { FONTS, WIDTH, HEIGHT } from "../constants";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar";
 import React, { useState } from "react";
 
 export default function Spend({navigation}){

@@ -5,22 +5,23 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import Navbar from './assets/components/Navbar';
 import { LinearGradient } from 'expo-linear-gradient';
-import Jeemat from './assets/components/Jeemat';
+import Jeemat from './assets/screens/Jeemat';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Account from './assets/components/Account';
-import Spend from './assets/components/Spend';
-import Login from './assets/components/Login';
-import Tabs from './assets/components/Tabs';
-import Game from './assets/components/Game';
-import Level from './assets/components/Level';
-import Signup from './assets/components/Signup';
-import RevealCoins from './assets/components/RevealCoins';
-import Savings from './assets/components/Savings';
-import Savings1 from './assets/components/Savings1';
+import Account from './assets/screens/Account';
+import Spend from './assets/screens/Spend';
+import Login from './assets/screens/Login';
+import Tabs from './assets/screens/Tabs';
+import Game from './assets/screens/Game';
+import Level from './assets/screens/Level';
+import Signup from './assets/screens/Signup';
+import RevealCoins from './assets/screens/RevealCoins';
+import Savings from './assets/screens/Savings';
+import Savings1 from './assets/screens/Savings1';
+import Savings2 from './assets/screens/Savings2';
 import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
-import Test from './assets/components/Test';
+import Test from './assets/screens/Test';
 import { LogBox } from 'react-native';
 
 Amplify.configure(awsconfig)
@@ -53,7 +54,7 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Savings1' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Savings2' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="Test" component={Test} />
             <Stack.Screen name="Login" component={Login} />
@@ -65,6 +66,7 @@ export default function App() {
             <Stack.Screen name="Account" component={Account} />
             <Stack.Screen name="Savings" component={Savings} />
             <Stack.Screen name="Savings1" component={Savings1} />
+            <Stack.Screen name="Savings2" component={Savings2} />
           </Stack.Navigator>
         </NavigationContainer>
     </View>

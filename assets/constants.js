@@ -1,4 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
+import 'intl';
+import 'intl/locale-data/jsonp/ms'
 
 export const FONTS = StyleSheet.create({
     header: {

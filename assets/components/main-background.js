@@ -1,9 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View, Keyboard, TouchableOpacity} from "react-native";
-import React, { useState } from "react";
-import { WIDTH, MYR } from "../constants";
+import { SafeAreaView, StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
+import React from "react";
 
-export default function Savings2({navigation}){
+export default function MainBackground({ content }){
 
 
     return (
@@ -24,13 +23,9 @@ export default function Savings2({navigation}){
                     colors={['rgba(0,0,0,0)', 'rgba(0,0,0,1)']} 
                     locations={[0, 1]}
                 >
-                    <SafeAreaView
-                        style={{
-                            flex: 1,
-                        }}
-                    >
-
-                    </SafeAreaView>
+                    
+                    {content()}
+                    
                 </LinearGradient>
             </LinearGradient>
         </TouchableWithoutFeedback>

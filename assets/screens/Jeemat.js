@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { FONTS, HEIGHT, WIDTH } from "../constants"
-import Navbar from "./Navbar"
+import Navbar from "../components/Navbar"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState, useEffect } from "react"
 import { MotiView } from "moti"

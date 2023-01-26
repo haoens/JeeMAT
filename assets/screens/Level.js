@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text, Image, ImageBackground, TouchableOpacity } from "react-native"
 import { HEIGHT, WIDTH } from "../constants"
-import Background from "./Background"
+import Background from "../components/Background"
 import React, {useState, useEffect} from "react"
 import RevealCoins from "./RevealCoins"
 

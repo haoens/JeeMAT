@@ -334,7 +334,8 @@ export default function Savings1({navigation}){
                                     </Text>
                             </View>
 
-                            <View
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('Savings2')}
                                 style={{
                                     flex: 1,
                                     flexDirection: 'row',
@@ -360,7 +361,7 @@ export default function Savings1({navigation}){
                                             Continue
                                         </Text>
                                     </LinearGradient>
-                            </View>
+                            </TouchableOpacity>
                             
                         </View>
 

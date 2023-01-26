@@ -1,6 +1,6 @@
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { FONTS, HEIGHT, WIDTH } from "../constants"
-import Navbar from "./Navbar"
+import Navbar from "../components/Navbar"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
 

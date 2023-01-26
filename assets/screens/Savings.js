@@ -1,10 +1,13 @@
 import { SafeAreaView, StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { WIDTH } from "../constants";
+import 'intl';
+import 'intl/locale-data/jsonp/ms'
 
 const MYR = new Intl.NumberFormat('ms-MY', {
     style: 'currency',
     currency: 'MYR',
+    minimumFractionDigits: 0,
     maximumFractionDigits: 0
 });
 
@@ -194,7 +197,7 @@ export default function Savings({ navigation }){
                                         
                                     }}
                                 >
-                                    Saving Goals:
+                                    JeeMAT SafeHouse:
                                 </Text>
 
                                 
