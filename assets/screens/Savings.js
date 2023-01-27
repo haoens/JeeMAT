@@ -15,6 +15,12 @@ const MYR = new Intl.NumberFormat('ms-MY', {
     maximumFractionDigits: 0
 });
 
+const removeGoal = async (targetGoal) => {
+    console.log(targetGoal.id)
+    await DataStore.delete(Goal, (goal) => goal.id.eq(targetGoal.id))
+}
+
+
 export default function Savings({ route, navigation }){
 
     const [goals1, setGoals1] = useState([]);
@@ -35,6 +41,7 @@ export default function Savings({ route, navigation }){
             type: "marriage"
         },
     ]
+ 
 
     useEffect(() => {
         /**
@@ -206,8 +213,7 @@ export default function Savings({ route, navigation }){
                                     flex: 0.8,
                                     flexDirection: 'row',
                                     justifyContent: 'space-between',
-                                    // borderColor: 'white',
-                                    // borderWidth: 1
+                                    marginBottom: 15
                                 }}
                             >
 
@@ -223,17 +229,31 @@ export default function Savings({ route, navigation }){
                                 </Text>
 
                                 
-
-                                <Text
+                                <View
                                     style={{
-                                        fontFamily: 'Poppins-Medium',
-                                        fontSize: 20,
-                                        color: 'rgba(255, 147, 189, 1)'
+                                        flexDirection: 'row',
+                                        alignItems: 'center',
                                     }}
                                 >
-                                    Sort By v
-                                </Text>
-
+                                    <Text
+                                        style={{
+                                            fontFamily: 'Poppins-Medium',
+                                            fontSize: 20,
+                                            color: 'rgba(255, 147, 189, 1)'
+                                        }}
+                                    >
+                                        Sort By
+                                    </Text>
+                                    
+                                    <Image 
+                                        source={require('../images/down-arrow.png')}
+                                        style={{
+                                            width: 10,
+                                            marginLeft: 15
+                                        }}    
+                                    />
+                                </View>
+                                
                             </View>
                             
                             <View 
@@ -277,7 +297,7 @@ export default function Savings({ route, navigation }){
                                         paddingVertical: 20,
                                         paddingHorizontal: 15
                                     }} 
-                                    onTouchEnd={() => navigation.navigate('Savings1')}
+                                    onTouchEnd={() => navigation.navigate('Savings3')}
                                 >
                                     <Text
                                         style={{
@@ -316,13 +336,15 @@ function mapGoalImage(type){
     }
     
 }
+
 function renderGoal(goal) {
     return (
-        <View
+        <TouchableOpacity
             style={{
-                marginBottom: 35,
+                marginBottom: 30,
                 flexDirection: 'row'
             }}
+            onLongPress={() => removeGoal(goal)}
         >
             <View
                 style={{
@@ -431,7 +453,7 @@ function renderGoal(goal) {
                 </View>
                 
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -9,20 +9,16 @@ import { MotiView } from "moti";
 
 export default function Savings2({ route, navigation }){
 
-    let name, amount;
+    let name, amount, type;
     if (route.params){
         name = route.params.name ? route.params.name : ""
         amount= route.params.amount ? route.params.amount : 0
+        type = route.params.type ? route.params.type : "gadget" 
     }
-    console.log(name, amount)
-    
  
     const [months, setMonths] = useState(route.params? route.params.months? route.params.months : 0 : 0)
     const [pressed, setPressed] = useState(false)
     const [method, setMethod] = useState(route.params? route.params.method? route.params.method : "" : "")
-    // console.log(pressed)
-    // console.log(months)
-    console.log(months)
 
     function renderSavings2(){
         return (
@@ -48,7 +44,8 @@ export default function Savings2({ route, navigation }){
                                 name,
                                 amount,
                                 months,
-                                method
+                                method,
+                                type
                             })}
                         >
                             <Image
@@ -341,7 +338,8 @@ export default function Savings2({ route, navigation }){
                                         name,
                                         amount,
                                         months,
-                                        method
+                                        method,
+                                        type
                                     })
                                 }}
                             >

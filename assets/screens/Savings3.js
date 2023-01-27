@@ -21,7 +21,7 @@ export default function Savings3({ navigation }) {
                             position: 'absolute',
                             left: 0
                         }}
-                        onPress={() => navigation.navigate("Savings1")}
+                        onPress={() => navigation.navigate("Savings")}
                     >
                         <Image
                             source={require('../images/arrow.png')}
@@ -47,11 +47,11 @@ export default function Savings3({ navigation }) {
                 <View style={{
                     flex: 3.3
                 }}>
-                    <The5buttons onPress={() => console.log('General Savings Button pressed')} text="General Savings" />
-                    <The5buttons onPress={() => console.log('Motor Vehicles Button pressed')} text="Motor Vehicles" />
-                    <The5buttons onPress={() => console.log('House Button pressed')} text="House" />
-                    <The5buttons onPress={() => console.log('Marriage Button pressed')} text="Marriage" />
-                    <The5buttons onPress={() => console.log('Gadgets Button pressed')} text="Gadgets" />
+                    <The5buttons onPress={() => navigation.navigate('Savings1', {type: 'general_savings'})} text="General Savings" />
+                    <The5buttons onPress={() => navigation.navigate('Savings1', {type: 'motor_vehicles'})} text="Motor Vehicles" />
+                    <The5buttons onPress={() => navigation.navigate('Savings1', {type: 'house'})} text="House" />
+                    <The5buttons onPress={() => navigation.navigate('Savings1', {type: 'marriage'})} text="Marriage" />
+                    <The5buttons onPress={() => navigation.navigate('Savings1', {type: 'gadgets'})} text="Gadgets" />
                 </View>
 
             </SafeAreaView>
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
     },
     theQuestion: {
         fontSize: 24,
-        fontFamily: 'Poppins-Medium',
+        fontFamily: 'Poppins-Light',
         color: 'white',
         textAlign: "center"
     },
 
     the5Texts: {
         fontSize: 20,
-        fontFamily: 'Poppins-Light',
+        fontFamily: 'Poppins-Medium',
         color: 'white',
         textAlign: 'left'
     },

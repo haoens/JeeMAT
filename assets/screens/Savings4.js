@@ -12,14 +12,15 @@ export default function Savings4({ route, navigation }){
     const [goal, setGoal] = useState({})
 
 
-    let name, amount, months, method
+    let name, amount, months, method, type
     if (route.params){
         name = route.params.name ? route.params.name : ""
         amount= route.params.amount ? route.params.amount : 0
         months = route.params.months ? route.params.months[0] : 0
         method = route.params.method ? route.params.method : "auto"
+        type = route.params.type ? route.params.type : "gadget"
     }
-    console.log(name, amount, months, method)
+    console.log(name, amount, months, method, type)
     const [frequency, setFrequency] = useState("")
 
     const startDate = new Date();
@@ -34,7 +35,7 @@ export default function Savings4({ route, navigation }){
         const newGoal = await DataStore.save(
             new Goal({
                 user_id: USER_MEGAN.email,
-                type: 'gadgets',
+                type,
                 name,
                 amount,
                 days_to_save: days,
@@ -94,7 +95,8 @@ export default function Savings4({ route, navigation }){
                             name,
                             amount,
                             months,
-                            method
+                            method,
+                            type
                         })}
                     >
                         <Image

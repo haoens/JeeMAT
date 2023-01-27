@@ -6,8 +6,14 @@ import { WIDTH, MYR } from "../constants";
 export default function Savings1({route, navigation}){
 
     const [name, setName] = useState(route.params ? route.params.name ? route.params.name : "" : "");
-    const [amount, setAmount] = useState(route.params ? route.params.amount ? route.params.amount : 1000 : 1000);
+    const [amount, setAmount] = useState(route.params ? route.params.amount ? route.params.amount : 0 : 0);
     // const []
+
+    let type
+    if (route.params){
+        type = route.params.type ? route.params.type : "gadget"
+    }
+    
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -45,7 +51,7 @@ export default function Savings1({route, navigation}){
                                     position: 'absolute',
                                     left: 0
                                 }}
-                                onPress={() => navigation.navigate("Savings")}
+                                onPress={() => navigation.navigate("Savings3")}
                             >
                                 <Image
                                     source={require('../images/arrow.png')}
@@ -67,8 +73,8 @@ export default function Savings1({route, navigation}){
                                 marginHorizontal: 15,
                             }}
                         >
-                            <View
-                                style={[styles.baseTermWrapper, {marginRight: 15}]}>
+                            <TouchableOpacity
+                                style={[styles.baseTermWrapper, {marginRight: 15}, styles.boxShadow]}>
                                     <LinearGradient 
                                         colors={['#ff739d', '#c375ff', '#7986ff']}
                                         locations={[.3, .67, 1]}
@@ -110,11 +116,11 @@ export default function Savings1({route, navigation}){
                                             />
                                         </View>
                                     </LinearGradient>
-                            </View>
+                            </TouchableOpacity>
                             
                                 
-                            <View
-                                style={styles.baseTermWrapper}
+                            <TouchableOpacity
+                                style={[styles.baseTermWrapper]}
                             >
                                     <LinearGradient 
                                         colors={['#ff739d', '#c375ff', '#7986ff']}
@@ -156,7 +162,7 @@ export default function Savings1({route, navigation}){
                                             />
                                         </View>
                                     </LinearGradient>
-                            </View>
+                            </TouchableOpacity>
                                 
                         </View>
 
@@ -256,7 +262,7 @@ export default function Savings1({route, navigation}){
                                             style={[styles.saveAmountText, {height: 60, width: WIDTH * 0.8}]}
                                             value={amount}
                                             keyboardType='numeric'
-                                            placeholder="1000.00"
+                                            placeholder="0.00"
                                             placeholderTextColor='rgba(219, 248, 236, 1)'
                                             onChangeText={(value) => setAmount(parseFloat(parseFloat(value).toFixed(2)))}
                                             textAlign='center'
@@ -340,7 +346,8 @@ export default function Savings1({route, navigation}){
                                     onPress={() => navigation.navigate('Savings2', 
                                     {
                                         name,
-                                        amount
+                                        amount,
+                                        type
                                     })}
                                     style={{
                                         flex: 1,
@@ -387,6 +394,8 @@ const styles = StyleSheet.create({
     },
     baseTermWrapper: {
         flex: 1,
+    },
+    boxShadow: {
         shadowColor: 'rgba(0,0,0,1)',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 1,
