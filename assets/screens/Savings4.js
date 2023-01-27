@@ -1,14 +1,18 @@
 import { Image, SafeAreaView, StyleSheet, Text, View, TouchableOpacity} from "react-native";
 import React, { useState } from "react";
 import MainBackground from "../components/main-background";
-import { MYR, TIME_FORMATTER, WIDTH } from "../constants";
+import { MYR, TIME_FORMATTER, USER_MEGAN, WIDTH } from "../constants";
 import { LinearGradient } from "expo-linear-gradient";
 import { add, differenceInCalendarWeeks, differenceInCalendarDays, differenceInMonths } from "date-fns";
+import { DataStore } from "aws-amplify";
+import { Goal } from "../../src/models";
 
 export default function Savings4({ route, navigation }){
 
-    let name, amount, months, method
+    const [goal, setGoal] = useState({})
 
+
+    let name, amount, months, method
     if (route.params){
         name = route.params.name ? route.params.name : ""
         amount= route.params.amount ? route.params.amount : 0
@@ -25,6 +29,26 @@ export default function Savings4({ route, navigation }){
 
     const days = differenceInCalendarDays(endDate, startDate)
     const weeks = differenceInCalendarWeeks(endDate, startDate)
+
+    const createGoal = async () => {
+        const newGoal = await DataStore.save(
+            new Goal({
+                user_id: USER_MEGAN.email,
+                type: 'gadgets',
+                name,
+                amount,
+                days_to_save: days,
+                method,
+                frequency,
+                status: 'active',
+                days_late: 0,
+                savings_late: 0,
+                savings_cumulated: 0
+                // to-do: add savings cumulated
+            })
+        )
+        console.log(JSON.stringify(newGoal))
+    }
 
     function RenderField( {param, value} ){
         
@@ -215,8 +239,15 @@ export default function Savings4({ route, navigation }){
                                     marginHorizontal: WIDTH * 0.2,
                                     marginTop: 20
                                 }}
-                                onPress={() => {
-                                    navigation.navigate('Savings4')
+                                onPress={async () => {
+                                    try{
+                                        createGoal()
+                                        navigation.navigate('Savings5')
+                                    }
+                                    catch(err){
+                                        console.log(err)
+                                        navigation.navigate('Savings')
+                                    }
                                 }}
                             >
 
@@ -237,7 +268,7 @@ export default function Savings4({ route, navigation }){
                                         fontFamily: 'Poppins-Medium',
                                         fontSize:  16
                                     }}>
-                                    Save
+                                    Confirm
                                 </Text>
                             </LinearGradient>
                         </TouchableOpacity>

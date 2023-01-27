@@ -105,7 +105,7 @@ export default function Level({navigation}){
                     }}
                 />
                 <View style={styles.TriangleShapeCSS}/>
-                <View style= {{flex: 1, borderWidth: 1, borderColor: 'yellow'}} />
+                <View style= {{flex: 1}} />
                 <View style={styles.contentWrapper}>
                     <View style={styles.topWrapper}>
                         <View style={styles.questionWrapper}>

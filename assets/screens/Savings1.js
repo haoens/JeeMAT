@@ -7,7 +7,7 @@ export default function Savings1({route, navigation}){
 
     const [name, setName] = useState(route.params ? route.params.name ? route.params.name : "" : "");
     const [amount, setAmount] = useState(route.params ? route.params.amount ? route.params.amount : 1000 : 1000);
-
+    // const []
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -120,8 +120,7 @@ export default function Savings1({route, navigation}){
                                         colors={['#ff739d', '#c375ff', '#7986ff']}
                                         locations={[.3, .67, 1]}
                                         start={{x:0, y:1}} end={{x:1, y:0}} 
-                                        style={styles.baseTermButton} 
-                                        onTouchEnd={() => {}}
+                                        style={{...styles.baseTermButton, shadowOpacity: 0}}
                                     >
                                         <View
                                             style={styles.termContent}
@@ -336,38 +335,39 @@ export default function Savings1({route, navigation}){
                                     </Text>
                             </View>
 
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate('Savings2', 
-                                {
-                                    name,
-                                    amount
-                                })}
-                                style={{
-                                    flex: 1,
-                                    flexDirection: 'row',
-                                    justifyContent: 'center',
-                                }}>
-                                    <LinearGradient 
-                                        colors={['#ff739d', '#c375ff', '#7986ff']}
-                                        locations={[.3, .67, 1]}
-                                        start={{x:0, y:1}} end={{x:1, y:0}} 
-                                        style={{
-                                            flex: 0.6,
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            borderRadius: 18
-                                        }} 
-                                        onTouchEnd={() => {}}
-                                    >
-                                        <Text
+                            {name !== "" && amount > 0 &&
+                                <TouchableOpacity
+                                    onPress={() => navigation.navigate('Savings2', 
+                                    {
+                                        name,
+                                        amount
+                                    })}
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: 'row',
+                                        justifyContent: 'center',
+                                    }}>
+                                        <LinearGradient 
+                                            colors={['#ff739d', '#c375ff', '#7986ff']}
+                                            locations={[.3, .67, 1]}
+                                            start={{x:0, y:1}} end={{x:1, y:0}} 
                                             style={{
-                                                fontFamily: 'Poppins-Medium',
-                                                fontSize:  16
-                                            }}>
-                                            Continue
-                                        </Text>
-                                    </LinearGradient>
-                            </TouchableOpacity>
+                                                flex: 0.6,
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                borderRadius: 18
+                                            }} 
+                                        >
+                                            <Text
+                                                style={{
+                                                    fontFamily: 'Poppins-Medium',
+                                                    fontSize:  16
+                                                }}>
+                                                Continue
+                                            </Text>
+                                        </LinearGradient>
+                                </TouchableOpacity>
+                            }   
                             
                         </View>
 

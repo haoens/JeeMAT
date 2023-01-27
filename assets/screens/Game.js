@@ -1,6 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
-import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native"
+import { View, StyleSheet, Text, Image, TouchableOpacity, SafeAreaView } from "react-native"
 import { WIDTH, HEIGHT } from "../constants"
 import Background from "../components/Background"
 
@@ -9,7 +9,7 @@ export default function Game({navigation}){
 
     function GameContent(){
         return (
-            <View style={styles.wrapper}>
+            <SafeAreaView style={styles.wrapper}>
                 <View style={styles.topWrapper}>
                     <Image
                         source={require('../images/level.png')}
@@ -56,7 +56,7 @@ export default function Game({navigation}){
                         </Text>
                     </LinearGradient>
                 </TouchableOpacity>
-            </View>
+            </SafeAreaView>
             
         )
     }

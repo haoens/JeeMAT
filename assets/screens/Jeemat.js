@@ -8,7 +8,7 @@ import { Easing } from "react-native-reanimated"
 import { AnimatePresence } from "moti"
 import { DataStore } from '@aws-amplify/datastore';
 import { Click } from "../../src/models"
-import { TEST_USER } from "../constants"
+import { USER_MEGAN } from "../constants"
 import { Auth } from 'aws-amplify';
 
 export default function Jeemat({ navigation }){
@@ -16,6 +16,7 @@ export default function Jeemat({ navigation }){
     const [ message, setMessage ] = useState(`How Much Can ${"\n"}I Spend Today?`)
     const [ pressed, setPressed ] = useState(false)
     const [ animation, setAnimation ] = useState(false)
+    
 
 
     async function getUser(){
@@ -57,8 +58,8 @@ export default function Jeemat({ navigation }){
     async function createClick(){
         const newClick = await DataStore.save(
             new Click({
-                user_id: TEST_USER.email,
-                daily_budget: TEST_USER.daily_budget
+                user_id: USER_MEGAN.email,
+                daily_budget: USER_MEGAN.daily_budget
             })
         );
         console.log(JSON.stringify(newClick))

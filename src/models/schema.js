@@ -14,14 +14,14 @@ export const schema = {
                     "name": "user_id",
                     "isArray": false,
                     "type": "AWSEmail",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "daily_budget": {
                     "name": "daily_budget",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -80,77 +80,77 @@ export const schema = {
                     "name": "user_id",
                     "isArray": false,
                     "type": "AWSEmail",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "type": {
                     "name": "type",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "name": {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "amount": {
                     "name": "amount",
                     "isArray": false,
                     "type": "Float",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "days_to_save": {
                     "name": "days_to_save",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "method": {
                     "name": "method",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "frequency": {
                     "name": "frequency",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "status": {
                     "name": "status",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "savings_cumulated": {
                     "name": "savings_cumulated",
                     "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
+                    "type": "Float",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "days_late": {
                     "name": "days_late",
                     "isArray": false,
                     "type": "Int",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "savings_late": {
                     "name": "savings_late",
                     "isArray": false,
                     "type": "Float",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -272,5 +272,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.3.5",
-    "version": "85828e7dde4dbb092c714210937c29d2"
+    "version": "c6c1717640803168372d3728f1a5c4bc"
 };

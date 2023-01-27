@@ -12,8 +12,8 @@ type EagerClick = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly user_id?: string | null;
-  readonly daily_budget?: number | null;
+  readonly user_id: string;
+  readonly daily_budget: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -24,8 +24,8 @@ type LazyClick = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly user_id?: string | null;
-  readonly daily_budget?: number | null;
+  readonly user_id: string;
+  readonly daily_budget: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -42,17 +42,17 @@ type EagerGoal = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly user_id?: string | null;
-  readonly type?: string | null;
-  readonly name?: string | null;
-  readonly amount?: number | null;
-  readonly days_to_save?: number | null;
-  readonly method?: string | null;
-  readonly frequency?: string | null;
-  readonly status?: string | null;
-  readonly savings_cumulated?: string | null;
-  readonly days_late?: number | null;
-  readonly savings_late?: number | null;
+  readonly user_id: string;
+  readonly type: string;
+  readonly name: string;
+  readonly amount: number;
+  readonly days_to_save: number;
+  readonly method: string;
+  readonly frequency: string;
+  readonly status: string;
+  readonly savings_cumulated: number;
+  readonly days_late: number;
+  readonly savings_late: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -63,17 +63,17 @@ type LazyGoal = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly user_id?: string | null;
-  readonly type?: string | null;
-  readonly name?: string | null;
-  readonly amount?: number | null;
-  readonly days_to_save?: number | null;
-  readonly method?: string | null;
-  readonly frequency?: string | null;
-  readonly status?: string | null;
-  readonly savings_cumulated?: string | null;
-  readonly days_late?: number | null;
-  readonly savings_late?: number | null;
+  readonly user_id: string;
+  readonly type: string;
+  readonly name: string;
+  readonly amount: number;
+  readonly days_to_save: number;
+  readonly method: string;
+  readonly frequency: string;
+  readonly status: string;
+  readonly savings_cumulated: number;
+  readonly days_late: number;
+  readonly savings_late: number;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

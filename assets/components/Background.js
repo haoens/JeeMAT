@@ -1,11 +1,11 @@
-import { View, StyleSheet, Text, Image } from "react-native"
+import { View, StyleSheet, Text, Image, SafeAreaView } from "react-native"
 import { WIDTH, HEIGHT } from "../constants"
 
 export default function Background( {child} ){
 
     return (
         <View style={styles.wrapper}>
-            <View style={styles.background}>
+            <SafeAreaView style={styles.background}>
                 <View 
                     style={{
                         ...styles.cloudWrapper,
@@ -46,7 +46,7 @@ export default function Background( {child} ){
                 
                 {child()}
 
-            </View>
+            </SafeAreaView>
         </View>
     )
 }

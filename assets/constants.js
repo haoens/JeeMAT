@@ -21,6 +21,11 @@ export const TEST_USER = {
     daily_budget: 60
 }
 
+export const USER_MEGAN = {
+    email: "megan@jeemat.com",
+    daily_budget: 60
+}
+
 export const MYR = new Intl.NumberFormat('ms-MY', {
     style: 'currency',
     currency: 'MYR',

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'
 import { FONTS, HEIGHT, WIDTH } from '../constants';
 
@@ -12,7 +12,7 @@ export default function Login({ navigation }) {
                 locations={[0, 0.25, 0.6]} 
                 style={styles.background}
             >
-                <View style={styles.topWrapper}>
+                <SafeAreaView style={styles.topWrapper}>
                     <View style={styles.logoWrapper}>
                         <Image 
                             source={require('../images/Logo.png')}
@@ -60,8 +60,8 @@ export default function Login({ navigation }) {
                         />
                     </LinearGradient>
 
-                </View>
-                <View style={styles.bottomWrapper}>
+                </SafeAreaView>
+                <SafeAreaView style={styles.bottomWrapper}>
                     <Text style={styles.motto}>
                         {`Start taking control ${'\n'}of your finances`}
                     </Text>
@@ -106,13 +106,13 @@ export default function Login({ navigation }) {
                     
                     <View style={styles.bottomBottomWrapper}>
                         <Text style={{ color: 'gray', fontFamily: 'Poppins-Light', marginRight: 5}}>
-                                Have an Account? 
+                                Have an account? 
                         </Text>
                         <Text style={{ color: 'white', fontFamily: 'Poppins-Light'}}> 
                             Sign In 
                         </Text>
                     </View>
-                </View>
+                </SafeAreaView>
 			</LinearGradient>
 		</View>
 	);
@@ -161,12 +161,12 @@ const styles = StyleSheet.create({
         flex: 5,
         flexDirection: 'row',
         alignItems: "flex-start",
-        paddingHorizontal: 20,
+        marginHorizontal: 20,
         paddingVertical: 10
     },
     bottomWrapper: {
         flex: 2.5,
-        paddingHorizontal: 20,
+        marginHorizontal: 20,
     },
     logoWrapper: {
         flexDirection: 'row',
@@ -200,9 +200,13 @@ const styles = StyleSheet.create({
     },
     bottomMidWrapper: {
         // ...BORDER_WRAPPER.border,
+        // borderWidth:1,
+        // borderColor: 'white',
+        justifyContent: 'space-around',
         flexDirection: 'row',
         flex: 2,
-        marginVertical: 15,
+        marginVertical: 20,
+        marginRight: 15,
     },
     startWrapper: {
         flex: 2.5,
@@ -212,7 +216,7 @@ const styles = StyleSheet.create({
         marginRight: WIDTH * 0.02,
     },
     startWrapper1: {
-        flex: 2.5,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: WIDTH * 0.04,
@@ -226,16 +230,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
+        aspectRatio: 1,
     },
     google: {
-        flex: 1,
         ...BORDER_WRAPPER.border,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
+        aspectRatio: 1,
+        flex: 1
     },
     bottomBottomWrapper: {
-        flex: 1,
+        flex: 1.5,
         flexDirection: 'row'
     },
     bottomTextGray: {

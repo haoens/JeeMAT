@@ -1,9 +1,12 @@
 import { SafeAreaView, StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { WIDTH, HEIGHT } from "../constants";
+import { WIDTH, HEIGHT, USER_MEGAN } from "../constants";
+import React, { useEffect, useState } from "react";
 import 'intl';
 import 'intl/locale-data/jsonp/ms'
 import 'intl/locale-data/jsonp/en'
+import { DataStore } from "aws-amplify";
+import { Goal } from "../../src/models";
 
 const MYR = new Intl.NumberFormat('ms-MY', {
     style: 'currency',
@@ -12,34 +15,44 @@ const MYR = new Intl.NumberFormat('ms-MY', {
     maximumFractionDigits: 0
 });
 
-export default function Savings({ navigation }){
+export default function Savings({ route, navigation }){
+
+    const [goals1, setGoals1] = useState([]);
 
     const goals = [
         {
             name: "Proton X70",
             dueDate: new Date("2032-06-06"),
-            amountSaved: 9000,
-            goal: 90000
+            savings_cumulated: 60000,
+            amount: 90000,
+            type: "motor_vehicles"
         },
         {
             name: "Marriage",
             dueDate: new Date("2028-05-06"),
-            amountSaved: 1000,
-            goal: 10000
+            savings_cumulated: 4000,
+            amount: 10000,
+            type: "marriage"
         },
-        // {
-        //     name: "Proton X70",
-        //     dueDate: new Date("2032-06-06"),
-        //     amountSaved: 9000,
-        //     goal: 90000
-        // },
-        // {
-        //     name: "Marriage",
-        //     dueDate: new Date("2028-05-06"),
-        //     amountSaved: 1000,
-        //     goal: 10000
-        // },
     ]
+
+    useEffect(() => {
+        /**
+         * This keeps `todo` fresh.
+         */
+        
+        const sub = DataStore.observeQuery(Goal, (g) => g.user_id.eq(USER_MEGAN.email)
+        ).subscribe(({ items }) => {
+          setGoals1(items);
+        //   console.log("goals: ", JSON.stringify(goals1))
+        });
+    
+        return () => {
+          sub.unsubscribe();
+        };
+      }, []);
+
+    // console.log("goals: ", JSON.stringify(goals1))
 
     return (
         <View
@@ -81,7 +94,7 @@ export default function Savings({ navigation }){
                                         position: 'absolute',
                                         left: 0
                                     }}
-                                    onPress={() => navigation.navigate("Account")}
+                                    onPress={() => navigation.navigate("Tabs")}
                                 >
                                     <Image
                                         source={require('../images/arrow.png')}
@@ -218,7 +231,7 @@ export default function Savings({ navigation }){
                                         color: 'rgba(255, 147, 189, 1)'
                                     }}
                                 >
-                                    Sort By  v
+                                    Sort By v
                                 </Text>
 
                             </View>
@@ -239,14 +252,14 @@ export default function Savings({ navigation }){
                                     }}
                                     showsVerticalScrollIndicator={false}
                                 >
-                                    {goals.map((goal) => renderGoal(goal))}
+                                    {[...goals, ...goals1].map((goal) => renderGoal(goal))}
 
                                 </ScrollView>
                             </View>
 
                             <TouchableOpacity
                                 style={{
-                                    flex: 1.2,
+                                    flex: 1.5,
                                     alignItems: 'center'
                                 }}
                             >
@@ -289,6 +302,20 @@ export default function Savings({ navigation }){
     )
 }
 
+function mapGoalImage(type){
+
+    switch (type) {
+        case "marriages":
+            return require('../images/marriage.png')
+        case "gadgets":
+            return require('../images/gadgets.png')
+        case "motor_vehicles":
+            return require('../images/motor_vehicles.png')
+        default:
+            return require('../images/marriage.png')
+    }
+    
+}
 function renderGoal(goal) {
     return (
         <View
@@ -302,10 +329,18 @@ function renderGoal(goal) {
                     height: 60,
                     width: 60,
                     borderRadius: 30,
-                    backgroundColor: 'white',
+                    backgroundColor: 'white',   
+                    alignItems: 'center',
+                    justifyContent: 'center'
                 }}
             >
-
+                <Image
+                    source={mapGoalImage(goal.type)}
+                    style={{
+                        resizeMode: 'contain',
+                        flex: 0.75
+                    }}
+                />
             </View>
 
             <View
@@ -361,7 +396,7 @@ function renderGoal(goal) {
                             style={{
                                 backgroundColor: 'rgba(63, 172, 45, 0.95)',
                                 height: 35,
-                                flex: goal.amountSaved / goal.goal,
+                                flex: goal.savings_cumulated / goal.amount,
                                 borderRadius: 20
                             }}
                         />
@@ -380,7 +415,7 @@ function renderGoal(goal) {
                                 fontFamily: 'Poppins-Medium'
                             }}
                         >
-                            {MYR.format(goal.amountSaved)}
+                            {MYR.format(goal.savings_cumulated)}
                         </Text>
 
                         <Text
@@ -390,7 +425,7 @@ function renderGoal(goal) {
                                 fontFamily: 'Poppins-Medium'
                             }}
                         >
-                           {MYR.format(goal.goal.toFixed(0))}
+                           {MYR.format(goal.amount.toFixed(0))}
                         </Text>
                     </View>
                 </View>
