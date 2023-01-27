@@ -3,6 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { WIDTH, HEIGHT } from "../constants";
 import 'intl';
 import 'intl/locale-data/jsonp/ms'
+import 'intl/locale-data/jsonp/en'
 
 const MYR = new Intl.NumberFormat('ms-MY', {
     style: 'currency',

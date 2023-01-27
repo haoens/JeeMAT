@@ -3,10 +3,10 @@ import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedb
 import React, { useState } from "react";
 import { WIDTH, MYR } from "../constants";
 
-export default function Savings1({navigation}){
+export default function Savings1({route, navigation}){
 
-    const [name, setName] = useState("");
-    const [amount, setAmount] = useState(1000);
+    const [name, setName] = useState(route.params ? route.params.name ? route.params.name : "" : "");
+    const [amount, setAmount] = useState(route.params ? route.params.amount ? route.params.amount : 1000 : 1000);
 
 
     return (
@@ -337,7 +337,11 @@ export default function Savings1({navigation}){
                             </View>
 
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('Savings2')}
+                                onPress={() => navigation.navigate('Savings2', 
+                                {
+                                    name,
+                                    amount
+                                })}
                                 style={{
                                     flex: 1,
                                     flexDirection: 'row',

@@ -23,13 +23,15 @@ export default function Savings3({navigation}){
             </View>
 
             <View
-                    style={{
-                        flex: 1
-                    }}
+                style={{
+                    flex: 1
+                }}
+            >
+                <Text
+                    style={[styles.the5text]}
                 >
-                    <Text
-                style={[styles.the5text]}>
-                General Savings</Text>
+                    General Savings
+                </Text>
                 <Text
                 style={[styles.the5text]}>
                 Motor Vehicles</Text>

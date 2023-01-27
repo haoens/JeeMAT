@@ -1,6 +1,8 @@
 import { Dimensions, StyleSheet } from "react-native";
 import 'intl';
 import 'intl/locale-data/jsonp/ms'
+import 'intl/locale-data/jsonp/en'
+
 
 export const FONTS = StyleSheet.create({
     header: {
@@ -23,3 +25,5 @@ export const MYR = new Intl.NumberFormat('ms-MY', {
     style: 'currency',
     currency: 'MYR',
 });
+
+export const TIME_FORMATTER = new Intl.DateTimeFormat('en-UK', { day: 'numeric', month: 'short', year: 'numeric'})

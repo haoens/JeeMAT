@@ -1,20 +1,28 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View, Keyboard, TouchableOpacity} from "react-native";
+import { Image, SafeAreaView, StyleSheet, Text, View, TouchableOpacity} from "react-native";
 import React, { useState } from "react";
-import { WIDTH, MYR, HEIGHT } from "../constants";
+import { WIDTH, HEIGHT } from "../constants";
 import MainBackground from "../components/main-background";
 // import Slider from "@react-native-community/slider";
 import { Slider } from "@miblanchard/react-native-slider";
 import { MotiView } from "moti";
 
-export default function Savings2({ navigation }){
+export default function Savings2({ route, navigation }){
 
-
-    const [months, setMonths] = useState(0)
+    let name, amount;
+    if (route.params){
+        name = route.params.name ? route.params.name : ""
+        amount= route.params.amount ? route.params.amount : 0
+    }
+    console.log(name, amount)
+    
+ 
+    const [months, setMonths] = useState(route.params? route.params.months? route.params.months : 0 : 0)
     const [pressed, setPressed] = useState(false)
-    const [save, setSave] = useState("")
-    console.log(pressed)
+    const [method, setMethod] = useState(route.params? route.params.method? route.params.method : "" : "")
+    // console.log(pressed)
     // console.log(months)
+    console.log(months)
 
     function renderSavings2(){
         return (
@@ -36,7 +44,12 @@ export default function Savings2({ navigation }){
                                 position: 'absolute',
                                 left: 0
                             }}
-                            onPress={() => navigation.navigate("Savings1")}
+                            onPress={() => navigation.navigate("Savings1", {
+                                name,
+                                amount,
+                                months,
+                                method
+                            })}
                         >
                             <Image
                                 source={require('../images/arrow.png')}
@@ -243,7 +256,7 @@ export default function Savings2({ navigation }){
                                 }}
                                 onPress={() => {
                                     setPressed(!pressed)
-                                    setSave
+                                    setMethod
                                 }}
                             >
                                 <LinearGradient
@@ -283,7 +296,7 @@ export default function Savings2({ navigation }){
                         backgroundColor: 'rgba(0,0,0,0.3)'
                     }}
                     onTouchEnd={() => {
-                        setSave("")
+                        setMethod("")
                         setPressed(false)
                     }}
                 />
@@ -309,23 +322,27 @@ export default function Savings2({ navigation }){
                         }}
                     >
                     
-                        {(save == "" || save == "auto") && renderAutoSave()}
+                        {(method == "" || method == "auto") && renderAutoSave()}
 
-                        {(save == "" || save == "manual") && renderManualSave()}
+                        {(method == "" || method == "manual") && renderManualSave()}
 
-                        {(save != "") && 
+                        {(method != "") && 
 
                             <TouchableOpacity
                                 style={{
-                                    flex: 1,
-                                    flexDirection: 'column',
+                                    flex: 0.8,
                                     marginVertical: 20,
                                     marginHorizontal: WIDTH * 0.2,
                                     // borderWidth: 1,
                                     // borderColor: 'white'
                                 }}
                                 onPress={() => {
-                                    navigation.navigate('Savings4')
+                                    navigation.navigate('Savings4', {
+                                        name,
+                                        amount,
+                                        months,
+                                        method
+                                    })
                                 }}
                             >
 
@@ -363,7 +380,7 @@ export default function Savings2({ navigation }){
         return (
             <TouchableOpacity
                 style={styles.saveOptionBase}
-                onPress={() => setSave("auto")}
+                onPress={() => setMethod("auto")}
             >
                 <View
                     style={{
@@ -428,7 +445,7 @@ export default function Savings2({ navigation }){
         return (
             <TouchableOpacity
                 style={styles.saveOptionBase}
-                onPress={() => setSave("manual")}
+                onPress={() => setMethod("manual")}
             >
                 <View
                     style={{
