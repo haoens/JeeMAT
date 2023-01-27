@@ -1,7 +1,9 @@
-import {SafeAreaView, View, Text, Button, StyleSheet} from "react-native";
+import {SafeAreaView, View, Text, Button, StyleSheet, TouchableOpacity} from "react-native";
+import MainBackground from "../components/main-background";
 
 export default function Savings3({navigation}){
-    return (
+    function renderSavings3(){
+        return(
         <SafeAreaView
                 style={{
                     flex: 1,
@@ -41,7 +43,7 @@ export default function Savings3({navigation}){
                 style={[styles.the5text]}>
                 Gadgets</Text>
                 </View>
-
+                
                 {/* <button style={{
     backgroundColor: 'blue',
     color: 'white',
@@ -51,6 +53,9 @@ export default function Savings3({navigation}){
     <text>General Savings</text>
 </button> */}
         </SafeAreaView>
+    )}
+    return (
+        <MainBackground content={renderSavings3} />
       )
 }
 
