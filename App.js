@@ -24,7 +24,7 @@ import { Amplify } from 'aws-amplify'
 import awsconfig from './src/aws-exports'
 import Test from './assets/screens/Test';
 import { LogBox } from 'react-native';
-import Savings4 from './assets/screens/Savings4';
+// import Savings4 from './assets/screens/Savings4';
 
 Amplify.configure(awsconfig)
 SplashScreen.preventAutoHideAsync();
@@ -70,7 +70,7 @@ export default function App() {
             <Stack.Screen name="Savings1" component={Savings1} />
             <Stack.Screen name="Savings2" component={Savings2} />
             <Stack.Screen name="Savings3" component={Savings3} />
-            <Stack.Screen name="Savings4" component={Savings4} />
+            {/* <Stack.Screen name="Savings4" component={Savings4} /> */}
           </Stack.Navigator>
         </NavigationContainer>
     </View>
