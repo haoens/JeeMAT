@@ -57,14 +57,14 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Savings3' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="Test" component={Test} />
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Tabs" component={Tabs}/>
             <Stack.Screen name="Spend" component={Spend} />
             <Stack.Screen name="Game" component={Game} />
-            <Stack.Screen name="Level" component={Level} />
+            <Stack.Screen name="Level" component={Level} options={{gestureDirection:'horizontal-inverted'}}/>
             <Stack.Screen name="RevealCoins" component={RevealCoins} />
             <Stack.Screen name="Account" component={Account} />
             <Stack.Screen name="Savings" component={Savings} />

@@ -78,7 +78,8 @@ export default function Login({ navigation }) {
                                 <Text 
                                     style={{
                                         color: 'white',
-                                        fontFamily: 'Poppins-Medium'
+                                        fontFamily: 'Poppins-Medium',
+                                        textAlign: 'center'
                                     }}
                                 >
                                     Get Started
@@ -86,21 +87,27 @@ export default function Login({ navigation }) {
                             </LinearGradient>
                         </TouchableOpacity>
                         
+                        <View
+                            style={{
+                                flex: 1,
+                                flexDirection: 'row'
+                            }}
+                        >
+                            <View style={styles.apple}>
+                                <Image 
+                                    source={require('../images/apple.png')}
+                                    style={{width: WIDTH * 0.08,
+                                        height:WIDTH * 0.08}}
+                                />
+                            </View>
 
-                        <View style={styles.apple}>
-                            <Image 
-                                source={require('../images/apple.png')}
-                                style={{width: WIDTH * 0.08,
-                                    height:WIDTH * 0.08}}
-                            />
-                        </View>
-
-                        <View style={styles.google}>
-                            <Image 
-                                source={require('../images/Google.png')}
-                                style={{width: WIDTH * 0.08,
-                                    height:WIDTH * 0.08}}
-                            />
+                            <View style={styles.google}>
+                                <Image 
+                                    source={require('../images/Google.png')}
+                                    style={{width: WIDTH * 0.08,
+                                        height:WIDTH * 0.08}}
+                                />
+                            </View>
                         </View>
                     </View>
                     
@@ -206,38 +213,39 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flex: 2,
         marginVertical: 20,
-        marginRight: 15,
     },
     startWrapper: {
-        flex: 2.5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: WIDTH * 0.04,
-        marginRight: WIDTH * 0.02,
-    },
-    startWrapper1: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: WIDTH * 0.04,
-        paddingHorizontal: WIDTH * 0.1
+        marginRight: WIDTH * 0.03,
+    },
+    startWrapper1: {
+        flex: 1,
+        justifyContent: 'center',
+        borderRadius: WIDTH * 0.04,
+        // borderWidth: 1,
+        // borderColor: 'white',
+        width: '100%'
+        // paddingHorizontal: WIDTH * 0.1
         // marginRight: WIDTH * 0.02
     },
     apple: {
         flex: 1,
         ...BORDER_WRAPPER.border,
-        marginRight: WIDTH * 0.02,
+        marginRight: WIDTH * 0.015,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
-        aspectRatio: 1,
+        // aspectRatio: 1,
     },
     google: {
         ...BORDER_WRAPPER.border,
+        marginLeft: WIDTH * 0.015,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
-        aspectRatio: 1,
         flex: 1
     },
     bottomBottomWrapper: {

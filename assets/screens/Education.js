@@ -22,7 +22,7 @@ export default function Education({ navigation }){
         noReviews: 4286
     }
 
-    const [showNews, setShowNews] = useState(false)
+    const [showNews, setShowNews] = useState(true)
 
 
     return (
@@ -51,9 +51,11 @@ export default function Education({ navigation }){
                             }}
                         >
                             <TouchableOpacity
-                                style={{
-                                    ...styles.baseBox
-                                }}
+                                style={!showNews ? 
+                                    [styles.baseBox, styles.boxShadow] :
+                                     styles.baseBox
+                                }
+                                activeOpacity={0.6}
                                 onPress={() => setShowNews(true)}
                             >
                                 <Image 
@@ -78,12 +80,14 @@ export default function Education({ navigation }){
                                 flex: 1,
                                 alignItems: 'center'
                             }}
+                            activeOpacity={0.6}
                             onPress={() => setShowNews(false)}
                         >
                             <View
-                                style={{
-                                    ...styles.baseBox
-                                }}
+                                style={showNews ? 
+                                    [styles.baseBox, styles.boxShadow] :
+                                     styles.baseBox
+                                }
                             >
                                 <Image 
                                     source={require('../images/courses.png')}
@@ -180,23 +184,27 @@ export default function Education({ navigation }){
 
                                             <View
                                                 style={{
-                                                    flexDirection: 'row',
+                                                    // flexDirection: 'row',
                                                     alignItems: 'flex-start',
-                                                    justifyContent: 'space-between'
+                                                    justifyContent: 'space-between',
                                                 }}>
                                                 <Text style={styles.fontSmall}>{courses.author}</Text>
                                                 
-                                                <TouchableOpacity>
+                                                <TouchableOpacity
+                                                    style={{
+                                                        alignSelf: 'flex-end'
+                                                    }}    
+                                                >
                                                     <LinearGradient 
-                                                        colors={['#ff739d', '#c375ff', '#7986ff']}
-                                                        locations={[.3, .67, 1]}
+                                                        colors={['rgba(255, 115, 157, 1)', '#CA73FF', '#73B7FF']}
+                                                        locations={[0, .5, 1]}
                                                         start={{x:0, y:1}} end={{x:1, y:0}}
                                                         style={{
-                                                            marginTop: 3,
-                                                            paddingVertical: 3,
-                                                            paddingHorizontal: 4,
+                                                            margin: 20,
+                                                            paddingVertical: 10,
+                                                            paddingHorizontal: 15,
                                                             borderRadius: 18,
-                                                            elevation: 5
+                                                            elevation: 5,
                                                         }}
                                                     >
                                                         <Text 
@@ -214,17 +222,15 @@ export default function Education({ navigation }){
 
                                         <View
                                             style={{
-                                                // borderWidth: 1,
-                                                // borderColor: 'black',
                                                 flex: 1,
-                                                alignItems: 'center',
-                                                justifyContent: 'center'
                                             }}
                                         >
                                             <View
                                                 style={{
                                                     flex: 1,
-                                                    alignItems: 'center'
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    // marginBottom: 5
                                                 }}
                                             >
                                                 <Image 
@@ -255,7 +261,7 @@ export default function Education({ navigation }){
                                                     style={{
                                                         flexDirection: 'row',
                                                         alignItems: 'center',
-                                                        flex: 1
+                                                        marginTop: 5
                                                     }}>
                                                     {[...Array(5)].map((_, index) => {
                                                         return (<View
@@ -300,13 +306,13 @@ export default function Education({ navigation }){
                                                 alignItems:'stretch',
                                                 justifyContent: 'space-evenly',
                                                 flex: 3,
-                                                paddingRight: 25
+                                                paddingRight: 25,
                                             }}
                                         >
                                             <View style={{
                                                 flexDirection: 'row',
                                                 justifyContent: 'space-between',
-                                                
+                                                flex: 1
                                             }}> 
                                                 <View>
                                                     <Text style={styles.fontSmall}>{news.date}</Text>
@@ -316,7 +322,11 @@ export default function Education({ navigation }){
                                                 </View>  
                                             </View>
 
-                                            <View>
+                                            <View
+                                                style={{
+                                                    flex: 2
+                                                }}
+                                            >
                                                 <Text
                                                     style={{
                                                         fontFamily: 'Poppins-Medium',
@@ -398,8 +408,13 @@ const styles = StyleSheet.create({
         borderRadius: 19,
         backgroundColor: 'white',
         maxHeight: 120,
-        padding: 5,
-        elevation: 3
+        padding: 5
+    },
+    boxShadow:{
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 4,
+        elevation: 4,
     },
     mainContent: {
         flex: 5
@@ -433,7 +448,7 @@ const styles = StyleSheet.create({
         paddingVertical: 7,
         paddingHorizontal: 14,
         marginBottom: 18,
-        borderRadius: 20
+        borderRadius: 20,
     },
     fontSmall: {
         color: 'white',
