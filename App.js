@@ -57,7 +57,7 @@ export default function App() {
     <View style={styles.container} onLayout={onLayoutRootView}>
         <NavigationContainer>
           <StatusBar style="auto" hidden/>
-          <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName='Savings3' screenOptions={{headerShown: false}}>
             <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name="Test" component={Test} />
             <Stack.Screen name="Login" component={Login} />

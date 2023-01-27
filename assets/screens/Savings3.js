@@ -1,4 +1,4 @@
-import { SafeAreaView, View, Text, Button, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import MainBackground from "../components/main-background";
 
 export default function Savings3({ navigation }) {
@@ -25,11 +25,7 @@ export default function Savings3({ navigation }) {
                     >
                         <Image
                             source={require('../images/arrow.png')}
-                            style={{
-                                transform: [{ scaleX: -1 }],
-                                height: 20,
-                                resizeMode: 'contain'
-                            }}
+                            style={[styles.theBackButton]}
                         >
                         </Image>
                     </TouchableOpacity>
@@ -48,78 +44,16 @@ export default function Savings3({ navigation }) {
                         Want To Save For?</Text>
                 </View>
 
-
-                <View
-                    style={{
-                        flex: 1
-                    }}
-                >
-                    <TouchableOpacity>
-                        <View>
-                            <Text
-                                style={[styles.the5text]}>
-                                General Savings</Text>
-                            <Image
-                                source={require('../images/arrow.png')}
-                            //  style={styles.ImageIconStyle}
-                            />
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View>
-                            <Text
-                                style={[styles.the5text]}>
-                                Motor Vehicles</Text>
-                            <Image
-                                source={require('../images/arrow.png')}
-                            //  style={styles.ImageIconStyle}
-                            />
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View>
-                            <Text
-                                style={[styles.the5text]}>
-                                House</Text>
-                            <Image
-                                source={require('../images/arrow.png')}
-                            //  style={styles.ImageIconStyle}
-                            />
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View>
-                            <Text
-                                style={[styles.the5text]}>
-                                Marriage</Text>
-                            <Image
-                                source={require('../images/arrow.png')}
-                            //  style={styles.ImageIconStyle}
-                            />
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View>
-                            <Text
-                                style={[styles.the5text]}>
-                                Gadgets</Text>
-                            <Image
-                                source={require('../images/arrow.png')}
-                            //  style={styles.ImageIconStyle}
-                            />
-                        </View>
-                    </TouchableOpacity>
-
+                <View style={{
+                    flex: 3.3
+                }}>
+                    <The5buttons onPress={() => console.log('General Savings Button pressed')} text="General Savings" />
+                    <The5buttons onPress={() => console.log('Motor Vehicles Button pressed')} text="Motor Vehicles" />
+                    <The5buttons onPress={() => console.log('House Button pressed')} text="House" />
+                    <The5buttons onPress={() => console.log('Marriage Button pressed')} text="Marriage" />
+                    <The5buttons onPress={() => console.log('Gadgets Button pressed')} text="Gadgets" />
                 </View>
 
-                {/* <button style={{
-                    backgroundColor: 'blue',
-                    color: 'white',
-                    padding: '10px 20px',
-                    borderRadius: '5px'
-                }}>
-                    <Text>General Savings</Text>
-                </button> */}
             </SafeAreaView>
         )
     }
@@ -129,16 +63,50 @@ export default function Savings3({ navigation }) {
     )
 }
 
+// button with an image and text
+const The5buttons = (props) => {
+    return (
+        <TouchableOpacity onPress={props.onPress} style={[styles.the5ButtonsStyle]}>
+            <Text style={[styles.the5Texts]}>{props.text}</Text>
+            <Image source={require('../images/arrow.png')} style={[styles.the5ArrowButtonsStyle]} />
+        </TouchableOpacity>
+    );
+}
+
 const styles = StyleSheet.create({
+    theBackButton: {
+        transform: [{ scaleX: -1 }],
+        height: 20,
+        resizeMode: 'contain'
+    },
     theQuestion: {
         fontSize: 24,
-        fontFamily: 'Poppins-Bold',
+        fontFamily: 'Poppins-Medium',
         color: 'white',
         textAlign: "center"
     },
-    the5text: {
+
+    the5Texts: {
         fontSize: 20,
-        fontFamily: 'Poppins-Bold',
-        color: 'white'
+        fontFamily: 'Poppins-Light',
+        color: 'white',
+        textAlign: 'left'
+    },
+
+    the5ButtonsStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderColor: 'rgba(255, 255, 255, 0.17)',
+        borderWidth: 1,
+        borderRadius: 19,
+        justifyContent: 'space-between',
+        paddingHorizontal: 25,
+        paddingVertical: 20,
+        marginBottom: 25
+    },
+
+    the5ArrowButtonsStyle: { 
+        width: 15, 
+        height: 15 
     }
 });
